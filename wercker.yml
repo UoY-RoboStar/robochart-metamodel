@@ -8,7 +8,6 @@ box: maven:3.6.1-jdk-11
 
 build:
   steps:
-    # https://github.com/wercker/step-maven
-    - wercker/maven:
-      goals: clean install
-      cache_repo: true
+    - script:
+        name: build release with maven
+        code: mvn clean install #-Dmaven.wagon.http.pool=false #-DforceContextQualifier=release
