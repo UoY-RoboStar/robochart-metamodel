@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/circus.robocalc.robochart/src-gen" creationIcons="false"
+    editDirectory="/circus.robocalc.robochart.edit/src-gen" editorDirectory="/circus.robocalc.robochart.editor/src-gen"
+    modelPluginID="circus.robocalc.robochart" modelName="RoboChart" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>robochart.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Robochart" basePackage="circus.robocalc" disposableProviderFactory="true"
+      ecorePackage="robochart.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="robochart.ecore#//TriggerType">
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/SIMPLE"/>
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/INPUT"/>
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/OUTPUT"/>
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/SYNC"/>
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/EMPTY"/>
+    </genEnums>
+    <genClasses ecoreClass="robochart.ecore#//RCPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//RCPackage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/interfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/robots"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/machines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/controllers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/modules"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/functions"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//TypeDecl"/>
+    <genClasses ecoreClass="robochart.ecore#//PrimitiveType"/>
+    <genClasses ecoreClass="robochart.ecore#//DataType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//DataType/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Field"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//TypedNamedElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//TypedNamedElement/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Member"/>
+    <genClasses ecoreClass="robochart.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Enumeration/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Literal">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Literal/types"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//NameType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//NameType/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Type"/>
+    <genClasses ecoreClass="robochart.ecore#//ProductType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ProductType/types"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//RelationType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RelationType/domain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RelationType/range"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//FunctionType"/>
+    <genClasses ecoreClass="robochart.ecore#//SetType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetType/domain"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SeqType"/>
+    <genClasses ecoreClass="robochart.ecore#//TypeRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//TypeRef/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//VariableList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//VariableList/modifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//VariableList/isConstants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//VariableList/vars"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Variable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Variable/initial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Variable/modifier"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Event">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Event/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Event/broadcast"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Function">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Function/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Function/preconditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Function/postconditions"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Parameter"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Operation"/>
+    <genClasses ecoreClass="robochart.ecore#//OperationSig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//OperationSig/terminates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationSig/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationSig/preconditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationSig/postconditions"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//OperationDef"/>
+    <genClasses ecoreClass="robochart.ecore#//OperationRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationRef/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Interface"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//BasicContext">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/variableList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/events"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//RoboticPlatform"/>
+    <genClasses ecoreClass="robochart.ecore#//RoboticPlatformDef"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Context">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Context/pInterfaces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Context/rInterfaces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Context/interfaces"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//RoboticPlatformRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//RoboticPlatformRef/ref"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//StateMachine"/>
+    <genClasses ecoreClass="robochart.ecore#//StateMachineDef"/>
+    <genClasses ecoreClass="robochart.ecore#//StateMachineRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//StateMachineRef/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//StateMachineBody">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//StateMachineBody/clocks"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Clock"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//NodeContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//NodeContainer/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//NodeContainer/transitions"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Node"/>
+    <genClasses ecoreClass="robochart.ecore#//Junction"/>
+    <genClasses ecoreClass="robochart.ecore#//Initial"/>
+    <genClasses ecoreClass="robochart.ecore#//State">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//State/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Final"/>
+    <genClasses ecoreClass="robochart.ecore#//ProbabilisticJunction"/>
+    <genClasses ecoreClass="robochart.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/trigger"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/end"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Transition/probability"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Trigger">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/event"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/_from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/_predicate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/parameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/time"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Trigger/reset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Trigger/_type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Action">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Action/action"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//EntryAction"/>
+    <genClasses ecoreClass="robochart.ecore#//DuringAction"/>
+    <genClasses ecoreClass="robochart.ecore#//ExitAction"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Controller"/>
+    <genClasses ecoreClass="robochart.ecore#//ControllerDef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ControllerDef/machines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ControllerDef/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Connection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Connection/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Connection/to"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Connection/efrom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Connection/eto"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Connection/async"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Connection/bidirec"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ControllerRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//ControllerRef/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//RCModule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCModule/connections"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCModule/nodes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Statement"/>
+    <genClasses ecoreClass="robochart.ecore#//TimedStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//TimedStatement/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//TimedStatement/stmt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//TimedStatement/end"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Wait">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Wait/duration"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Skip"/>
+    <genClasses ecoreClass="robochart.ecore#//IfStmt">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IfStmt/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IfStmt/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IfStmt/else"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Assignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Assignment/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Assignment/right"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SendEvent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SendEvent/trigger"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SeqStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SeqStatement/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ParStmt">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ParStmt/stmt"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Call">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Call/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Call/args"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ClockReset">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//ClockReset/clock"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Expression"/>
+    <genClasses ecoreClass="robochart.ecore#//ResultExp"/>
+    <genClasses ecoreClass="robochart.ecore#//ArrayExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ArrayExp/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ArrayExp/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ClockExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//ClockExp/clock"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//StateClockExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//StateClockExp/state"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//BinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BinaryExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BinaryExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Iff"/>
+    <genClasses ecoreClass="robochart.ecore#//Implies"/>
+    <genClasses ecoreClass="robochart.ecore#//Or"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//QuantifierExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//QuantifierExpression/variables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//QuantifierExpression/suchthat"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//QuantifierExpression/predicate"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Forall"/>
+    <genClasses ecoreClass="robochart.ecore#//Exists">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//Exists/unique"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//LambdaExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//LambdaExp/variables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//LambdaExp/suchthat"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//LambdaExp/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//DefiniteDescription"/>
+    <genClasses ecoreClass="robochart.ecore#//IfExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IfExpression/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IfExpression/ifexp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IfExpression/elseexp"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Declaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Declaration/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//LetExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//LetExpression/declarations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//LetExpression/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//And"/>
+    <genClasses ecoreClass="robochart.ecore#//Not">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Not/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//InExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//InExp/member"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//InExp/set"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//TypeExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//TypeExp/type"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Equals"/>
+    <genClasses ecoreClass="robochart.ecore#//Different"/>
+    <genClasses ecoreClass="robochart.ecore#//GreaterThan"/>
+    <genClasses ecoreClass="robochart.ecore#//GreaterOrEqual"/>
+    <genClasses ecoreClass="robochart.ecore#//LessThan"/>
+    <genClasses ecoreClass="robochart.ecore#//LessOrEqual"/>
+    <genClasses ecoreClass="robochart.ecore#//Plus"/>
+    <genClasses ecoreClass="robochart.ecore#//Minus"/>
+    <genClasses ecoreClass="robochart.ecore#//Modulus"/>
+    <genClasses ecoreClass="robochart.ecore#//Mult"/>
+    <genClasses ecoreClass="robochart.ecore#//Div"/>
+    <genClasses ecoreClass="robochart.ecore#//Cat"/>
+    <genClasses ecoreClass="robochart.ecore#//Neg">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Neg/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//Selection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Selection/receiver"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//Selection/member"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//IntegerExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//IntegerExp/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//FloatExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//FloatExp/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//StringExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//StringExp/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//BooleanExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//BooleanExp/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//VarExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//VarExp/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//RefExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//RefExp/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ToExp"/>
+    <genClasses ecoreClass="robochart.ecore#//FromExp"/>
+    <genClasses ecoreClass="robochart.ecore#//IdExp"/>
+    <genClasses ecoreClass="robochart.ecore#//AsExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//AsExp/exp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//AsExp/type"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//IsExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IsExp/exp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//IsExp/type"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//EnumExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//EnumExp/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//EnumExp/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ParExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ParExp/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SeqExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SeqExp/values"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SetExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetExp/values"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SetComp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetComp/variables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetComp/predicate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetComp/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//SetRange">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetRange/start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//SetRange/end"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//TupleExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//TupleExp/values"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//RangeExp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//RangeExp/linterval"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RangeExp/lrange"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RangeExp/rrange"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//RangeExp/rinterval"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//CallExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//CallExp/function"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//CallExp/args"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ElseExp"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Assignable"/>
+    <genClasses ecoreClass="robochart.ecore#//VarSelection">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//VarSelection/receiver"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//VarSelection/member"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//ArrayAssignable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ArrayAssignable/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ArrayAssignable/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//VarRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//VarRef/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//ConnectionNode"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//NamedExpression"/>
+  </genPackages>
+</genmodel:GenModel>
