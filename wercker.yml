@@ -4,10 +4,11 @@
 # available at http://www.eclipse.org/legal/epl-2.0.
 #
 # SPDX-License-Identifier: EPL-2.0
-box: maven:3.6.1-jdk-11
+box: 11.0.3-jdk-stretch
 
 build:
   steps:
-    - script:
-        name: build release with maven
-        code: mvn clean install -Dmaven.wagon.http.pool=false #-DforceContextQualifier=release
+    - wercker/maven:
+      goals: clean install
+      cache_repo: true
+      version: 3.6.0
