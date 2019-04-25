@@ -4,7 +4,7 @@
 # available at http://www.eclipse.org/legal/epl-2.0.
 #
 # SPDX-License-Identifier: EPL-2.0
-box: 11.0.3-jdk-stretch
+box: openjdk:11.0.3-jdk-stretch
 
 build:
   steps:
