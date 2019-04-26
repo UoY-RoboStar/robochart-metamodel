@@ -17,6 +17,8 @@ deploy:
   steps:
     - install-packages:
         packages: rsync
+    - add-ssh-key:
+        keyname: deployment
     - script:
         name: uploading update site
         code: |-
