@@ -15,8 +15,8 @@ then
   cp -r ../$dir/* $dest
   ln -s $dest update
   rsync -a -e "ssh" -rtzh . $url:$remote
+  exit $?;
 else
   echo "Couldn't find current version"
+  exit 1;
 fi
-
-exit 0;
