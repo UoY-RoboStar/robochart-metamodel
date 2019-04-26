@@ -8,8 +8,12 @@
     copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>robochart.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Robochart" basePackage="circus.robocalc" disposableProviderFactory="true"
+  <genPackages prefix="RoboChart" basePackage="circus.robocalc" disposableProviderFactory="true"
       ecorePackage="robochart.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="robochart.ecore#//VariableModifier">
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//VariableModifier/VAR"/>
+      <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//VariableModifier/CONST"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="robochart.ecore#//TriggerType">
       <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/SIMPLE"/>
       <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/INPUT"/>
@@ -37,8 +41,8 @@
     </genClasses>
     <genClasses image="false" ecoreClass="robochart.ecore#//TypeDecl"/>
     <genClasses ecoreClass="robochart.ecore#//PrimitiveType"/>
-    <genClasses ecoreClass="robochart.ecore#//DataType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//DataType/fields"/>
+    <genClasses ecoreClass="robochart.ecore#//RecordType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RecordType/fields"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//Field"/>
     <genClasses image="false" ecoreClass="robochart.ecore#//TypedNamedElement">
@@ -70,9 +74,11 @@
     <genClasses ecoreClass="robochart.ecore#//TypeRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//TypeRef/ref"/>
     </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//AnyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//AnyType/identifier"/>
+    </genClasses>
     <genClasses ecoreClass="robochart.ecore#//VariableList">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//VariableList/modifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//VariableList/isConstants"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//VariableList/vars"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//Variable">
@@ -89,14 +95,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Function/postconditions"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//Parameter"/>
-    <genClasses image="false" ecoreClass="robochart.ecore#//Operation"/>
     <genClasses ecoreClass="robochart.ecore#//OperationSig">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//OperationSig/terminates"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationSig/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationSig/preconditions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationSig/postconditions"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Operation"/>
     <genClasses ecoreClass="robochart.ecore#//OperationDef"/>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Reference"/>
     <genClasses ecoreClass="robochart.ecore#//OperationRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//OperationRef/ref"/>
     </genClasses>
@@ -166,6 +173,7 @@
     <genClasses image="false" ecoreClass="robochart.ecore#//Controller"/>
     <genClasses ecoreClass="robochart.ecore#//ControllerDef">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ControllerDef/machines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ControllerDef/lOperations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//ControllerDef/connections"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//Connection">

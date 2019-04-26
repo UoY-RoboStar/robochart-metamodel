@@ -67,6 +67,9 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class TypeRef -> Type
     Reference ref : TypeDecl<<1..1>>
 
+  Class AnyType -> Type
+    Attribute identifier : EString<<1..1>>
+
   Class VariableList
     Attribute /modifier : EString<<1..1>>
     Attribute isConstants : EBoolean<<1..1>>

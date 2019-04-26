@@ -10,7 +10,7 @@
       <!-- @generated robochart -->
       <package
             uri="http://www.robocalc.circus/RoboChart"
-            class="circus.robocalc.robochart.RobochartPackage"
+            class="circus.robocalc.robochart.RoboChartPackage"
             genModel="model/robochart.genmodel"/>
    </extension>
 
