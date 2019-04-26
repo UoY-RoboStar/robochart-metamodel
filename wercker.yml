@@ -19,6 +19,10 @@ deploy:
         packages: rsync
     - add-ssh-key:
         keyname: deployment
+    - add-to-known_hosts:
+        hostname: sftp.york.ac.uk
+        fingerprint: 1ksayLs+AwXM/7ljQ4uIgCqHq7Z8U8tPG+iZDAsm51M
+        type: rsa
     - script:
         name: uploading update site
         code: |-
