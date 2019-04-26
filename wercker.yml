@@ -15,8 +15,9 @@ build:
       
 deploy:
   steps:
-    script:
-      - export LC_ALL=C.UTF-8
-      - apt-get update
-      - apt-get install --assume-yes rsync
-      - ./upload.sh
+    - install-packages:
+        packages: rsync
+    - script:
+        name: uploading update site
+        code: |-
+          ./upload.sh
