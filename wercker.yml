@@ -12,3 +12,11 @@ build:
       goals: clean install
       cache_repo: true
       version: 3.6.0
+      
+deploy:
+  steps:
+    script:
+      - export LC_ALL=C.UTF-8
+      - apt-get update
+      - apt-get install --assume-yes rsync
+      - ./upload.sh
