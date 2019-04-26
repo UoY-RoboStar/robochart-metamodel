@@ -14,7 +14,7 @@ then
   mkdir $dest
   cp -r ../$dir/* $dest
   ln -s $dest update
-  rsync -a -e "ssh" -rtzh ./ $url:$remote
+  rsync -a -e "ssh" -rtzh . $url:$remote
 else
   echo "Couldn't find current version"
 fi
