@@ -29,7 +29,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class PrimitiveType -> TypeDecl
 
-  Class DataType -> TypeDecl
+  Class RecordType -> TypeDecl
     Reference fields : Field<<1..*>>
 
   Class Field -> Member, NamedExpression
@@ -71,8 +71,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Attribute identifier : EString<<1..1>>
 
   Class VariableList
-    Attribute /modifier : EString<<1..1>>
-    Attribute isConstants : EBoolean<<1..1>>
+    Attribute modifier : VariableModifier<<1..1>>
     Reference vars : Variable<<1..*>>
 
   Class Variable -> TypedNamedElement, NamedExpression
@@ -90,17 +89,19 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class Parameter -> Variable
 
-  Class Operation -> NamedElement
-
-  Class OperationSig -> Operation
+  Class OperationSig -> NamedElement
     Attribute terminates : EBoolean<<1..1>>
     Reference parameters : Parameter<<0..*>>
     Reference preconditions : Expression<<0..*>>
     Reference postconditions : Expression<<0..*>>
 
-  Class OperationDef -> OperationSig, StateMachineBody
+  Class Operation -> NamedElement
 
-  Class OperationRef -> Operation
+  Class OperationDef -> Operation, OperationSig, StateMachineBody
+
+  Class Reference
+
+  Class OperationRef -> Operation, Reference
     Reference ref : OperationDef<<1..1>>
 
   Class Interface -> NamedElement, BasicContext
@@ -119,14 +120,14 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference rInterfaces : Interface<<0..*>>
     Reference interfaces : Interface<<0..*>>
 
-  Class RoboticPlatformRef -> RoboticPlatform
+  Class RoboticPlatformRef -> RoboticPlatform, Reference
     Reference ref : RoboticPlatformDef<<1..1>>
 
   Class StateMachine -> NamedElement, ConnectionNode
 
   Class StateMachineDef -> StateMachineBody, StateMachine
 
-  Class StateMachineRef -> StateMachine
+  Class StateMachineRef -> StateMachine, Reference
     Reference ref : StateMachineDef<<1..1>>
 
   Class StateMachineBody -> Context, NodeContainer
@@ -184,6 +185,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class ControllerDef -> Context, Controller
     Reference machines : StateMachine<<0..*>>
+    Reference lOperations : Operation<<0..*>>
     Reference connections : Connection<<0..*>>
 
   Class Connection
@@ -252,7 +254,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class StateClockExp -> Expression
     Reference state : State<<1..1>>
 
-  Class BinaryExpression
+  Class BinaryExpression -> Expression
     Reference left : Expression<<1..1>>
     Reference right : Expression<<1..1>>
 
@@ -262,7 +264,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class Or -> BinaryExpression
 
-  Class QuantifierExpression
+  Class QuantifierExpression -> Expression
     Reference variables : Variable<<1..*>>
     Reference suchthat : Expression
     Reference predicate : Expression<<1..1>>
@@ -419,6 +421,10 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class ConnectionNode
 
   Class NamedExpression
+
+  Enum VariableModifier
+    Literal VAR = 0
+    Literal CONST = 0
 
   Enum TriggerType
     Literal SIMPLE = 0
