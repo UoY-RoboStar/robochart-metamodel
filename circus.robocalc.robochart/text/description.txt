@@ -76,7 +76,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class Variable -> TypedNamedElement, NamedExpression
     Reference initial : Expression
-    Attribute /modifier : EString<<1..1>>
+    Attribute /modifier : VariableModifier<<1..1>>
 
   Class Event -> NamedElement
     Reference type : Type
@@ -337,10 +337,10 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference member : Member<<1..1>>
 
   Class IntegerExp -> Expression
-    Attribute value : EInt<<1..1>>
+    Attribute value : EInt
 
   Class FloatExp -> Expression
-    Attribute value : EFloat<<1..1>>
+    Attribute value : EFloat
 
   Class StringExp -> Expression
     Attribute value : EString<<1..1>>
