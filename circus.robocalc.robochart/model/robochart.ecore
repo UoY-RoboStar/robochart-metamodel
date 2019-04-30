@@ -510,7 +510,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Call" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
-        eType="#//Operation"/>
+        eType="#//OperationSig"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
