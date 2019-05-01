@@ -6,6 +6,6 @@
    <feature id="circus.robocalc.robochart.feature.source" version="0.0.0">
       <category name="main.source"/>
    </feature>
-   <category-def name="main" label="RoboChart"/>
-   <category-def name="main.source" label="RoboChart (Source)"/>
+   <category-def name="main" label="RoboChart Ecore Modelling "/>
+   <category-def name="main.source" label="RoboChart Ecore Modelling (Source)"/>
 </site>
