@@ -148,7 +148,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class State -> Node, NodeContainer
     Reference actions : Action<<0..*>>
 
-  Class Final -> Node
+  Class Final -> State
 
   Class ProbabilisticJunction -> Junction
 
@@ -234,7 +234,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference stmt : Statement<<1..1>>
 
   Class Call -> Statement
-    Reference operation : Operation<<1..1>>
+    Reference operation : OperationSig<<1..1>>
     Reference args : Expression<<0..*>>
 
   Class ClockReset -> Statement
@@ -337,10 +337,10 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference member : Member<<1..1>>
 
   Class IntegerExp -> Expression
-    Attribute value : EInt
+    Attribute value : EInt<<1..1>>
 
   Class FloatExp -> Expression
-    Attribute value : EFloat
+    Attribute value : EFloat<<1..1>>
 
   Class StringExp -> Expression
     Attribute value : EString<<1..1>>
@@ -421,6 +421,14 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class ConnectionNode
 
   Class NamedExpression
+
+  Class WaitingCondition
+    Reference expression : Expression
+    Reference transitions : Transition<<0..*>>
+    Attribute name : EString
+
+  Class WaitingConditionRef -> Expression
+    Reference ref : WaitingCondition
 
   Enum VariableModifier
     Literal VAR = 0

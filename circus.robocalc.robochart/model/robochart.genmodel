@@ -381,5 +381,13 @@
     </genClasses>
     <genClasses image="false" ecoreClass="robochart.ecore#//ConnectionNode"/>
     <genClasses image="false" ecoreClass="robochart.ecore#//NamedExpression"/>
+    <genClasses ecoreClass="robochart.ecore#//WaitingCondition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingCondition/expression"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingCondition/transitions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//WaitingCondition/name"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//WaitingConditionRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingConditionRef/ref"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

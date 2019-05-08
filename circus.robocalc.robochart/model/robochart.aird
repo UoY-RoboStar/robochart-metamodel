@@ -932,6 +932,8 @@
     <semanticResources>java:/Objects/org.eclipse.emf.common.notify.impl.SingletonAdapterImpl</semanticResources>
     <semanticResources>java:/Objects/org.eclipse.emf.codegen.util.GIFEmitter</semanticResources>
     <semanticResources>java:/Objects/com.google.common.annotations.GwtCompatible</semanticResources>
+    <semanticResources>../RoboChart.ecore</semanticResources>
+    <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_a2oLoGdPEemnw9oydYBvpQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_a6mFoGdPEemnw9oydYBvpQ" name="robochart" repPath="#_a3wNAGdPEemnw9oydYBvpQ">
