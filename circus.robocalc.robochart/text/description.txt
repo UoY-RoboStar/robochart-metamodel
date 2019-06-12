@@ -95,7 +95,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference preconditions : Expression<<0..*>>
     Reference postconditions : Expression<<0..*>>
 
-  Class Operation -> NamedElement
+  Class Operation -> NamedElement, ConnectionNode
 
   Class OperationDef -> Operation, OperationSig, StateMachineBody
 

@@ -204,7 +204,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true" eSuperTypes="#//NamedElement #//ConnectionNode"/>
   <eClassifiers xsi:type="ecore:EClass" name="OperationDef" eSuperTypes="#//Operation #//OperationSig #//StateMachineBody"/>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
