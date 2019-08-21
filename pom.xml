@@ -37,16 +37,6 @@ SPDX-License-Identifier: EPL-2.0
             <url>${eclipse-repo.url}</url>
             <layout>p2</layout>
         </repository>
-        <repository>
-            <id>robochart-metamodel</id>
-            <url>https://www.cs.york.ac.uk/robostar/robotool/metamodel/update/</url>
-            <layout>p2</layout>
-        </repository>
-        <repository>
-            <id>robochart-textual</id>
-            <url>https://www.cs.york.ac.uk/robostar/robotool/textual/update/</url>
-            <layout>p2</layout>
-        </repository>
     </repositories>
 
     <build>
