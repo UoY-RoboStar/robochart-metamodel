@@ -4,13 +4,15 @@
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="RCPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="BasicPackage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" ordered="false" upperBound="-1" eType="#//Import" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RCPackage" eSuperTypes="#//BasicPackage">
     <eStructuralFeatures xsi:type="ecore:EReference" name="interfaces" ordered="false" upperBound="-1" eType="#//Interface" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
