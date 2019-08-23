@@ -7,9 +7,11 @@ This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator
 
 Package robochart <http://www.robocalc.circus/RoboChart>
 
-  Class RCPackage
+  Class BasicPackage
     Attribute name : EString
     Reference imports : Import<<0..*>>
+
+  Class RCPackage -> BasicPackage
     Reference interfaces : Interface<<0..*>>
     Reference robots : RoboticPlatformDef<<0..*>>
     Reference types : TypeDecl<<0..*>>
