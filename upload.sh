@@ -1,6 +1,6 @@
 echo "Get current version"
 dir=circus.robocalc.robochart.update/target/repository/
-remote=/shared/storage/cs/webcs/robostar/robotool/metamodel/
+remote=/shared/storage/cs/www/robostar/robotool/metamodel/
 url=ahm504@sftp.york.ac.uk
 file=$(ls $dir/features | grep -m 1 jar)
 version=${file#*_}
