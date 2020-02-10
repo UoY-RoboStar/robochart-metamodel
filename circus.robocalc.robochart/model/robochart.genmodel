@@ -21,9 +21,11 @@
       <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/SYNC"/>
       <genEnumLiterals ecoreEnumLiteral="robochart.ecore#//TriggerType/EMPTY"/>
     </genEnums>
+    <genClasses ecoreClass="robochart.ecore#//BasicPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//BasicPackage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicPackage/imports"/>
+    </genClasses>
     <genClasses ecoreClass="robochart.ecore#//RCPackage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//RCPackage/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/interfaces"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/robots"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RCPackage/types"/>
@@ -388,6 +390,10 @@
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//WaitingConditionRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingConditionRef/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//VectorType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//VectorType/base"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//VectorType/size"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

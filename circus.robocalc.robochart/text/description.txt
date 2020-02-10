@@ -76,7 +76,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Attribute modifier : VariableModifier<<1..1>>
     Reference vars : Variable<<1..*>>
 
-  Class Variable -> TypedNamedElement, NamedExpression
+  Class Variable -> TypedNamedElement, NamedExpression, Member
     Reference initial : Expression
     Attribute /modifier : VariableModifier<<1..1>>
 
@@ -431,6 +431,10 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class WaitingConditionRef -> Expression
     Reference ref : WaitingCondition
+
+  Class VectorType -> Type
+    Reference base : Type<<1..1>>
+    Attribute size : EInt<<1..1>>
 
   Enum VariableModifier
     Literal VAR = 0

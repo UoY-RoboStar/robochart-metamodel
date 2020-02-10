@@ -6,19 +6,20 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated robochart -->
-      <package
-            uri="http://www.robocalc.circus/RoboChart"
-            class="circus.robocalc.robochart.RoboChartPackage"
-            genModel="model/robochart.genmodel"/>
-   </extension>
    <extension
          point="org.eclipse.emf.ecore.factory_override">
       <factory
             class="circus.robocalc.robochart.impl.RoboChartFactoryImplCustom"
             uri="http://www.robocalc.circus/RoboChart">
       </factory>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated robochart -->
+      <package
+            uri="http://www.robocalc.circus/RoboChart"
+            class="circus.robocalc.robochart.RoboChartPackage"
+            genModel="model/robochart.genmodel"/>
    </extension>
 
 </plugin>
