@@ -436,6 +436,11 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference base : Type<<1..1>>
     Attribute size : EInt<<1..1>>
 
+  Class MatrixType -> Type
+    Reference base : Type<<1..1>>
+    Attribute rows : EInt<<1..1>>
+    Attribute columns : EInt<<1..1>>
+
   Enum VariableModifier
     Literal VAR = 0
     Literal CONST = 0
