@@ -112,6 +112,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference variableList : VariableList<<0..*>>
     Reference operations : OperationSig<<0..*>>
     Reference events : Event<<0..*>>
+    Reference clocks : Clock<<0..*>>
 
   Class RoboticPlatform -> NamedElement, ConnectionNode
 
@@ -133,7 +134,6 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference ref : StateMachineDef<<1..1>>
 
   Class StateMachineBody -> Context, NodeContainer
-    Reference clocks : Clock<<0..*>>
 
   Class Clock -> NamedElement
 
@@ -424,10 +424,9 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class NamedExpression
 
-  Class WaitingCondition
+  Class WaitingCondition -> NamedElement
     Reference expression : Expression
     Reference transitions : Transition<<0..*>>
-    Attribute name : EString
 
   Class WaitingConditionRef -> Expression
     Reference ref : WaitingCondition

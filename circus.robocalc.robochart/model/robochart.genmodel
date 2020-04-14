@@ -114,6 +114,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/variableList"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/operations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/events"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//BasicContext/clocks"/>
     </genClasses>
     <genClasses image="false" ecoreClass="robochart.ecore#//RoboticPlatform"/>
     <genClasses ecoreClass="robochart.ecore#//RoboticPlatformDef"/>
@@ -130,9 +131,7 @@
     <genClasses ecoreClass="robochart.ecore#//StateMachineRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//StateMachineRef/ref"/>
     </genClasses>
-    <genClasses ecoreClass="robochart.ecore#//StateMachineBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//StateMachineBody/clocks"/>
-    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//StateMachineBody"/>
     <genClasses ecoreClass="robochart.ecore#//Clock"/>
     <genClasses image="false" ecoreClass="robochart.ecore#//NodeContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//NodeContainer/nodes"/>
@@ -386,7 +385,6 @@
     <genClasses ecoreClass="robochart.ecore#//WaitingCondition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingCondition/expression"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingCondition/transitions"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//WaitingCondition/name"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//WaitingConditionRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//WaitingConditionRef/ref"/>
