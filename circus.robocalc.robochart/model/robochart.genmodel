@@ -398,5 +398,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//MatrixType/rows"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//MatrixType/columns"/>
     </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//RecordExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RecordExp/definitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//RecordExp/record"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//FieldDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//FieldDefinition/field"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//FieldDefinition/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

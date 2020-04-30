@@ -440,6 +440,14 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Attribute rows : EInt<<1..1>>
     Attribute columns : EInt<<1..1>>
 
+  Class RecordExp -> Expression
+    Reference definitions : FieldDefinition<<1..*>>
+    Reference record : RecordType<<1..1>>
+
+  Class FieldDefinition
+    Reference field : Field<<1..1>>
+    Reference value : Expression<<1..1>>
+
   Enum VariableModifier
     Literal VAR = 0
     Literal CONST = 0
