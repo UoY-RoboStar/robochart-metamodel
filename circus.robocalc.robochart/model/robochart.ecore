@@ -174,7 +174,7 @@
     <eLiterals name="VAR"/>
     <eLiterals name="CONST"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//TypedNamedElement #//NamedExpression #//Member">
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//TypedNamedElement #//Member #//Mutable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initial" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" lowerBound="1"
@@ -770,7 +770,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VarRef" eSuperTypes="#//Assignable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//Mutable"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectionNode" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="NamedExpression" abstract="true"/>
@@ -813,4 +813,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Mutable" abstract="true" eSuperTypes="#//NamedElement #//NamedExpression"/>
 </ecore:EPackage>
