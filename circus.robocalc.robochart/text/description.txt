@@ -76,7 +76,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Attribute modifier : VariableModifier<<1..1>>
     Reference vars : Variable<<1..*>>
 
-  Class Variable -> TypedNamedElement, Member, Mutable
+  Class Variable -> TypedNamedElement, NamedExpression, Member
     Reference initial : Expression
     Attribute /modifier : VariableModifier<<1..1>>
 
@@ -418,7 +418,7 @@ Package robochart <http://www.robocalc.circus/RoboChart>
     Reference parameters : Expression<<1..*>>
 
   Class VarRef -> Assignable
-    Reference name : Mutable<<1..1>>
+    Reference name : Variable<<1..1>>
 
   Class ConnectionNode
 
@@ -447,8 +447,6 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class FieldDefinition
     Reference field : Field<<1..1>>
     Reference value : Expression<<1..1>>
-
-  Class Mutable -> NamedElement, NamedExpression
 
   Enum VariableModifier
     Literal VAR = 0
