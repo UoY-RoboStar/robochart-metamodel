@@ -391,12 +391,12 @@
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//VectorType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//VectorType/base"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//VectorType/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference robochart.ecore#//VectorType/size"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//MatrixType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//MatrixType/base"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//MatrixType/rows"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute robochart.ecore#//MatrixType/columns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference robochart.ecore#//MatrixType/rows"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference robochart.ecore#//MatrixType/columns"/>
     </genClasses>
     <genClasses ecoreClass="robochart.ecore#//RecordExp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//RecordExp/definitions"/>
@@ -406,5 +406,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//FieldDefinition/field"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//FieldDefinition/value"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="robochart.ecore#//Mutable"/>
   </genPackages>
 </genmodel:GenModel>

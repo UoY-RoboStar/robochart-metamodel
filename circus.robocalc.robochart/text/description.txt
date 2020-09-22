@@ -450,6 +450,12 @@ Package robochart <http://www.robocalc.circus/RoboChart>
 
   Class Mutable -> NamedElement, NamedExpression
 
+  Class VectorExp -> Expression
+    Reference values : Expression<<1..*>>
+
+  Class MatrixExp -> Expression
+    Reference values : VectorExp<<1..*>>
+
   Enum VariableModifier
     Literal VAR = 0
     Literal CONST = 0
