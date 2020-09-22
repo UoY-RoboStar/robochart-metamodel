@@ -407,5 +407,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//FieldDefinition/value"/>
     </genClasses>
     <genClasses image="false" ecoreClass="robochart.ecore#//Mutable"/>
+    <genClasses ecoreClass="robochart.ecore#//VectorExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//VectorExp/values"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//MatrixExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//MatrixExp/values"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//InverseExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//InverseExp/value"/>
+    </genClasses>
+    <genClasses ecoreClass="robochart.ecore#//TransposeExp">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference robochart.ecore#//TransposeExp/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

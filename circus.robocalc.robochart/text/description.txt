@@ -456,6 +456,12 @@ Package robochart <http://www.robocalc.circus/RoboChart>
   Class MatrixExp -> Expression
     Reference values : VectorExp<<1..*>>
 
+  Class InverseExp -> Expression
+    Reference value : Expression<<1..1>>
+
+  Class TransposeExp -> Expression
+    Reference value : Expression<<1..1>>
+
   Enum VariableModifier
     Literal VAR = 0
     Literal CONST = 0
