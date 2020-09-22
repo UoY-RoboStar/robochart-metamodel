@@ -14,12 +14,4 @@
       </factory>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated robochart -->
-      <package
-            uri="http://www.robocalc.circus/RoboChart"
-            class="circus.robocalc.robochart.RoboChartPackage"
-            genModel="model/robochart.genmodel"/>
-   </extension>
-
 </plugin>

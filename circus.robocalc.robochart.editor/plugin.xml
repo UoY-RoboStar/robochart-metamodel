@@ -6,31 +6,4 @@
 
 <plugin>
 
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated robochart -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="circus.robocalc.robochart.presentation.RoboChartModelWizardID"
-            name="%_UI_RoboChartModelWizard_label"
-            class="circus.robocalc.robochart.presentation.RoboChartModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/RoboChartModelFile.gif">
-         <description>%_UI_RoboChartModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated robochart -->
-      <editor
-            id="circus.robocalc.robochart.presentation.RoboChartEditorID"
-            name="%_UI_RoboChartEditor_label"
-            icon="icons/full/obj16/RoboChartModelFile.gif"
-            extensions="robochart"
-            class="circus.robocalc.robochart.presentation.RoboChartEditor"
-            contributorClass="circus.robocalc.robochart.presentation.RoboChartActionBarContributor">
-      </editor>
-   </extension>
 </plugin>
