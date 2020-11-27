@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <interfaces name="C4interface3">
+    <operations name="op1"/>
+    <operations name="op2">
+      <parameters name="a1">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.0"/>
+        </type>
+      </parameters>
+    </operations>
+  </interfaces>
+  <interfaces name="C4interface4">
+    <operations name="op2">
+      <parameters name="a1">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.0"/>
+        </type>
+      </parameters>
+    </operations>
+  </interfaces>
+  <controllers rInterfaces="//@interfaces.1" name="C4ctrl2">
+    <machines xsi:type="robochart:StateMachineDef" rInterfaces="//@interfaces.0" name="C4stm2">
+      <nodes xsi:type="robochart:Initial" name="i0"/>
+      <nodes xsi:type="robochart:Final" name="f0"/>
+      <transitions name="t0" source="//@controllers.0/@machines.0/@nodes.0" target="//@controllers.0/@machines.0/@nodes.1"/>
+    </machines>
+    <lOperations xsi:type="robochart:OperationDef" name="op1">
+      <nodes xsi:type="robochart:Initial" name="i0"/>
+      <nodes xsi:type="robochart:Final" name="f0"/>
+      <transitions name="t0" source="//@controllers.0/@lOperations.0/@nodes.0" target="//@controllers.0/@lOperations.0/@nodes.1"/>
+    </lOperations>
+  </controllers>
+</robochart:RCPackage>

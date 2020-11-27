@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <interfaces name="I1interface2">
+    <events name="event1"/>
+  </interfaces>
+  <robots pInterfaces="//@interfaces.0" name="I1rp1"/>
+</robochart:RCPackage>

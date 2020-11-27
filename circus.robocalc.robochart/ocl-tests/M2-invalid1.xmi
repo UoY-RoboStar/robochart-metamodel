@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <interfaces name="M2interface5">
+    <variableList>
+      <vars name="var1">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.0"/>
+        </type>
+      </vars>
+    </variableList>
+    <operations name="op1"/>
+  </interfaces>
+  <modules name="M2mod4">
+    <nodes xsi:type="robochart:RoboticPlatformDef" name="M2rp4"/>
+    <nodes xsi:type="robochart:ControllerDef" rInterfaces="//@interfaces.0" name="M2ctrl4">
+      <machines xsi:type="robochart:StateMachineDef" name="M2stm4">
+        <nodes xsi:type="robochart:Initial" name="i0"/>
+        <nodes xsi:type="robochart:Final" name="f0"/>
+        <transitions name="t0" source="//@modules.0/@nodes.1/@machines.0/@nodes.0" target="//@modules.0/@nodes.1/@machines.0/@nodes.1"/>
+      </machines>
+    </nodes>
+  </modules>
+</robochart:RCPackage>

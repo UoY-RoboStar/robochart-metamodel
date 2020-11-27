@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <controllers name="ctrTg2_invalid">
+    <variableList>
+      <vars name="x">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="../../../../eclipse-2019-03-RoboTool-workspace/OCLExamples/Tg2-invalid1.rct#|0"/>
+        </type>
+      </vars>
+    </variableList>
+    <events name="obstacle">
+      <type xsi:type="robochart:TypeRef">
+        <ref xsi:type="robochart:PrimitiveType" href="../../../../eclipse-2019-03-RoboTool-workspace/OCLExamples/Tg2-invalid1.rct#|1"/>
+      </type>
+    </events>
+    <machines xsi:type="robochart:StateMachineDef" name="stm0">
+      <nodes xsi:type="robochart:Initial" name="i0"/>
+      <nodes xsi:type="robochart:Final" name="f0"/>
+      <nodes xsi:type="robochart:State" name="s0"/>
+      <transitions name="t0" source="//@controllers.0/@machines.0/@nodes.0" target="//@controllers.0/@machines.0/@nodes.2"/>
+      <transitions name="t1" source="//@controllers.0/@machines.0/@nodes.2" target="//@controllers.0/@machines.0/@nodes.1">
+        <trigger event="//@controllers.0/@events.0"/>
+        <action xsi:type="robochart:Skip"/>
+      </transitions>
+    </machines>
+  </controllers>
+</robochart:RCPackage>

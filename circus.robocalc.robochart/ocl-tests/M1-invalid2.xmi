@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <modules name="M1mod3">
+    <nodes xsi:type="robochart:RoboticPlatformDef" name="M1rp2"/>
+  </modules>
+</robochart:RCPackage>

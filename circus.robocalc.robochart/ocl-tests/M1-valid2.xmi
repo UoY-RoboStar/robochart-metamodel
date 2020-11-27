@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <modules name="M1mod1">
+    <nodes xsi:type="robochart:RoboticPlatformDef" name="M1rp1"/>
+    <nodes xsi:type="robochart:ControllerDef" name="M1ctrl1">
+      <machines xsi:type="robochart:StateMachineDef" name="M1stm1">
+        <nodes xsi:type="robochart:Initial" name="i0"/>
+        <nodes xsi:type="robochart:Final" name="f0"/>
+        <transitions name="t0" source="//@modules.0/@nodes.1/@machines.0/@nodes.0" target="//@modules.0/@nodes.1/@machines.0/@nodes.1"/>
+      </machines>
+    </nodes>
+    <nodes xsi:type="robochart:ControllerDef" name="M1ctrl2">
+      <machines xsi:type="robochart:StateMachineDef" name="M1stm2">
+        <nodes xsi:type="robochart:Initial" name="i0"/>
+        <nodes xsi:type="robochart:Final" name="f0"/>
+        <transitions name="t0" source="//@modules.0/@nodes.2/@machines.0/@nodes.0" target="//@modules.0/@nodes.2/@machines.0/@nodes.1"/>
+      </machines>
+    </nodes>
+  </modules>
+</robochart:RCPackage>
