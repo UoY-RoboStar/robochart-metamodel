@@ -5,7 +5,6 @@ import circus.robocalc.robochart.OperationSig;
 import circus.robocalc.robochart.Parameter;
 import circus.robocalc.robochart.RCPackage;
 import circus.robocalc.robochart.RangeExp;
-import circus.robocalc.robochart.Trigger;
 import circus.robocalc.robochart.Variable;
 
 public class RoboChartFactoryImplCustom extends RoboChartFactoryImpl {
