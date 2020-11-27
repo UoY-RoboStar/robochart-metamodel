@@ -42,4 +42,4 @@ Whenever updating the tool, follow these steps:
         2. Change the language reference manual
         3. Change the tool manual
 
-If changes to documentations are not possible immediately, create issues indicating exactly what needs to be done.
+If changes to documentations are not possible immediately, create issues indicating exactly what needs to be done and also indicate in the report that changes are needed.
