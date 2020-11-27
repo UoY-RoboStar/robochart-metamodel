@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <machines name="CE3stm1">
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:Final" name="f0"/>
+    <nodes xsi:type="robochart:State" name="s0">
+      <nodes xsi:type="robochart:Initial" name="i0"/>
+      <nodes xsi:type="robochart:State" name="s0"/>
+      <nodes xsi:type="robochart:Final" name="f0"/>
+      <transitions name="t0" source="//@machines.0/@nodes.2/@nodes.0" target="//@machines.0/@nodes.2/@nodes.1"/>
+      <transitions name="t1" source="//@machines.0/@nodes.2/@nodes.1" target="//@machines.0/@nodes.2/@nodes.2">
+        <trigger/>
+        <condition xsi:type="robochart:GreaterThan">
+          <left xsi:type="robochart:ClockExp" clock="//@controllers.0/@machines.0/@clocks.0"/>
+          <right xsi:type="robochart:IntegerExp" value="2"/>
+        </condition>
+      </transitions>
+    </nodes>
+    <transitions name="t0" source="//@machines.0/@nodes.0" target="//@machines.0/@nodes.2"/>
+    <transitions name="t1" source="//@machines.0/@nodes.2" target="//@machines.0/@nodes.1">
+      <trigger/>
+    </transitions>
+    <clocks name="C"/>
+  </machines>
+  <controllers name="CE3ctrl0">
+    <machines xsi:type="robochart:StateMachineDef" name="CE3stm2">
+      <nodes xsi:type="robochart:Initial" name="i0"/>
+      <nodes xsi:type="robochart:Final" name="f0"/>
+      <transitions name="t0" source="//@controllers.0/@machines.0/@nodes.0" target="//@controllers.0/@machines.0/@nodes.1"/>
+      <clocks name="C2"/>
+    </machines>
+    <machines xsi:type="robochart:StateMachineRef" name="stm_ref0" ref="//@machines.0"/>
+  </controllers>
+</robochart:RCPackage>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <interfaces name="I1interface3">
+    <variableList>
+      <vars name="var1">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.0"/>
+        </type>
+      </vars>
+    </variableList>
+    <operations name="op1"/>
+    <events name="event1"/>
+  </interfaces>
+  <robots pInterfaces="//@interfaces.0" name="I1rp2"/>
+</robochart:RCPackage>

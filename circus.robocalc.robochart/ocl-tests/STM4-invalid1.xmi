@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <machines name="STM4stm2">
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+  </machines>
+</robochart:RCPackage>

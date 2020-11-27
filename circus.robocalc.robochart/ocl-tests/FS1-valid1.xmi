@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <machines name="FS1stm0">
+    <nodes xsi:type="robochart:Initial" name="i0"/>
+    <nodes xsi:type="robochart:Final" name="f0"/>
+    <nodes xsi:type="robochart:State" name="s0"/>
+    <transitions name="t0" source="//@machines.0/@nodes.0" target="//@machines.0/@nodes.2"/>
+    <transitions name="t1" source="//@machines.0/@nodes.2" target="//@machines.0/@nodes.1"/>
+  </machines>
+</robochart:RCPackage>

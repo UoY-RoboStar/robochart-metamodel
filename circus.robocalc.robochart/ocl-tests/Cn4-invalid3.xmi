@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <modules name="Cn4mod6">
+    <nodes xsi:type="robochart:RoboticPlatformDef" name="Cn4rp6">
+      <events name="event1"/>
+    </nodes>
+    <nodes xsi:type="robochart:ControllerDef" name="Cn4ctrl6">
+      <events name="event1">
+        <type xsi:type="robochart:TypeRef">
+          <ref xsi:type="robochart:PrimitiveType" href="platform:/plugin/circus.robocalc.robochart.textual/lib/robochart/core.rct#//@types.0"/>
+        </type>
+      </events>
+      <machines xsi:type="robochart:StateMachineDef" name="Cn4stm6">
+        <events name="event1"/>
+        <nodes xsi:type="robochart:Initial" name="i0"/>
+        <nodes xsi:type="robochart:Final" name="f0"/>
+        <transitions name="t0" source="//@modules.0/@nodes.1/@machines.0/@nodes.0" target="//@modules.0/@nodes.1/@machines.0/@nodes.1"/>
+      </machines>
+      <connections from="//@modules.0/@nodes.1" to="//@modules.0/@nodes.1/@machines.0" efrom="//@modules.0/@nodes.1/@events.0" eto="//@modules.0/@nodes.1/@machines.0/@events.0"/>
+    </nodes>
+  </modules>
+</robochart:RCPackage>

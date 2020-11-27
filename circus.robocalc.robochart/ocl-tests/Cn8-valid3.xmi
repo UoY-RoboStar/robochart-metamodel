@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<robochart:RCPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:robochart="http://www.robocalc.circus/RoboChart">
+  <controllers name="Cn8ctrl2">
+    <events name="event1"/>
+    <machines xsi:type="robochart:StateMachineDef" name="Cn8stm2">
+      <events name="event1"/>
+      <nodes xsi:type="robochart:Initial" name="i0"/>
+      <nodes xsi:type="robochart:Final" name="f0"/>
+      <nodes xsi:type="robochart:State" name="s0">
+        <actions xsi:type="robochart:EntryAction">
+          <action xsi:type="robochart:SendEvent">
+            <trigger event="//@controllers.0/@machines.0/@events.0"/>
+          </action>
+        </actions>
+      </nodes>
+      <transitions name="t0" source="//@controllers.0/@machines.0/@nodes.0" target="//@controllers.0/@machines.0/@nodes.2"/>
+      <transitions name="t1" source="//@controllers.0/@machines.0/@nodes.2" target="//@controllers.0/@machines.0/@nodes.1">
+        <trigger/>
+      </transitions>
+    </machines>
+    <connections from="//@controllers.0" to="//@controllers.0/@machines.0" efrom="//@controllers.0/@events.0" eto="//@controllers.0/@machines.0/@events.0" bidirec="true"/>
+  </controllers>
+</robochart:RCPackage>
