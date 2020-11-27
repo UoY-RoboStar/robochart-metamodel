@@ -1,10 +1,10 @@
 package circus.robocalc.robochart.impl;
 
+import circus.robocalc.robochart.Communication;
 import circus.robocalc.robochart.OperationSig;
 import circus.robocalc.robochart.Parameter;
 import circus.robocalc.robochart.RCPackage;
 import circus.robocalc.robochart.RangeExp;
-import circus.robocalc.robochart.Trigger;
 import circus.robocalc.robochart.Variable;
 
 public class RoboChartFactoryImplCustom extends RoboChartFactoryImpl {
@@ -34,8 +34,8 @@ public class RoboChartFactoryImplCustom extends RoboChartFactoryImpl {
 	}
 
 	@Override
-	public Trigger createTrigger() {
-		TriggerImplCustom o = new TriggerImplCustom();
+	public Communication createCommunication() {
+		CommunicationImplCustom o = new CommunicationImplCustom();
 		return o;
 	}
 	
