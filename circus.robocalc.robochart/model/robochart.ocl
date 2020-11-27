@@ -3,70 +3,6 @@ import 'http://www.eclipse.org/emf/2002/Ecore'
 
 package robochart
 
--- function to extract RoboticPlatformDef from a RoboticPlatform (which may be a ref)
-context RoboticPlatform
-	def: rpDef() : RoboticPlatformDef = 
- 		if self.oclIsKindOf(RoboticPlatformDef) then 
-			self.oclAsType(RoboticPlatformDef)
-		else 
-			self.oclAsType(RoboticPlatformRef).ref
-		endif
--- function to extract ControllerDef from a Controller (which may be a ref)
-context Controller
-	def: controllerDef() : ControllerDef = 
-		if self.oclIsKindOf(ControllerDef) then 
-			self.oclAsType(ControllerDef)
-		else 
-			self.oclAsType(ControllerRef).ref
-		endif
--- function to extract StateMachineDef from a StateMachine (which may be a ref)
-context StateMachine
-	def: stmDef() : StateMachineDef = 
-		if self.oclIsKindOf(StateMachineDef) then 
-			self.oclAsType(StateMachineDef)
-		else 
-			self.oclAsType(StateMachineRef).ref
-		endif
-
--- function to get input and output events of a node container
--- (An event is considered to be an output if it is used in an OUPUT or SYNC trigger, 
--- 	or if it is used in an OUTPUT, SYNC or SIMPLE send statement.)
--- (An event is considered to be an input if it is used in an INPUT or SIMPLE trigger, 
--- 	or if it is used in an INPUT send statement.)
-context NodeContainer
-	def: ncInputEvents() : Bag(Event) =
-		self.transitions->select(t | t.trigger <> null and 
-			(t.trigger._type = TriggerType::INPUT or t.trigger._type = TriggerType::SIMPLE)
-		).trigger.event
-		->union(self.transitions->select(t | t.action <> null).action.statementInputEvents())
-		->union(self.nodes->selectByKind(NodeContainer).ncInputEvents())
-		->union(self.nodes->selectByKind(State).actions.action.statementInputEvents())
-	def: ncOutputEvents() : Bag(Event) =
-		self.transitions->select(t | t.trigger <> null and 
-			(t.trigger._type = TriggerType::OUTPUT or t.trigger._type = TriggerType::SYNC)
-		).trigger.event
-		->union(self.transitions->select(t | t.action <> null).action.statementOutputEvents())
-		->union(self.nodes->selectByKind(NodeContainer).ncOutputEvents())
-		->union(self.nodes->selectByKind(State).actions.action.statementOutputEvents())
-context Statement
-	def: statementInputEvents() : Bag(Event) = Bag{}
-	def: statementOutputEvents() : Bag(Event) = Bag{}
-context SendEvent
-	def: statementInputEvents() : Bag(Event) =
-		Set{self.trigger}->select(t | t._type = TriggerType::INPUT).event
-	def: statementOutputEvents() : Bag(Event) =
-		Set{self.trigger}->select(t | Set{TriggerType::OUTPUT, TriggerType::SYNC, TriggerType::SIMPLE}->includes(t._type)).event
-context SeqStatement
-	def: statementInputEvents() : Bag(Event) =
-		self.statements.statementInputEvents()->asBag()
-	def: statementOutputEvents() : Bag(Event) =
-		self.statements.statementOutputEvents()->asBag()
-context IfStmt
-	def: statementInputEvents() : Bag(Event) =
-		self._'then'.statementInputEvents()->union(self._'else'.statementInputEvents())
-	def: statementOutputEvents() : Bag(Event) =
-		self._'then'.statementOutputEvents()->union(self._'else'.statementOutputEvents())
-
 -- Robotic Platforms well-formedness conditions (RoboChart reference 3.1.1)
 context RoboticPlatformDef
 	-- We note that variables and operations declared directly in the platform,
@@ -91,7 +27,8 @@ context RoboticPlatformDef
 			.operations->union(self.operations).name)
 		->union(self->collect(c | c.interfaces->union(c.rInterfaces)->union(c.pInterfaces))
 			.events->union(self.events).name)->isUnique(i | i)
-		
+
+			
 -- Interfaces well-formedness conditions (RoboChart reference 3.1.2)
 context Interface
 	-- I1: Provided and required interfaces contain only variables and operations
@@ -104,7 +41,8 @@ context Interface
 	inv I3: self.variableList.vars.name
 		->union(self.operations->asBag().name)
 		->union(self.events->asBag().name)->isUnique(i | i)
-	
+
+		
 -- Modules well-formedness conditions (RoboChart reference 3.1.3)
 context RCModule
 	def: moduleControllers() : Set(Controller) =
@@ -116,7 +54,7 @@ context RCModule
 	inv M1: self.nodes->selectByKind(RoboticPlatform)->one(true)
 		and self.nodes->selectByKind(Controller)->exists(true)
 		and self.nodes->selectByKind(StateMachine)->isEmpty()
-	-- M2: All variables and operations required by the module’s controllers must be provided by the platform
+	-- M2: All variables and operations required by the module's controllers must be provided by the platform
 	inv M2: self.nodes->selectByKind(RoboticPlatform)->exists(true) implies
 		(self.moduleRP().rpDef().rpProvidedVars()
 			->includesAll(self.moduleControllers().controllerDef().controllerRequiredVars())
@@ -128,20 +66,8 @@ context RCModule
 			->forAll(e | self.connections->select(c | c.efrom = e or c.eto = e)->size() <= 1)
 		and self.moduleControllers().controllerDef().controllerDefinedEvents()
 			->forAll(e | self.connections->select(c | c.efrom = e or c.eto = e)->size() <= 1)
-	
-context ConnectionNode
-	def: connectionNodeContext() : Context =
-		if self.oclIsKindOf(StateMachine) then
-			self.oclAsType(StateMachine).stmDef()
-		elseif self.oclIsKindOf(Controller) then
-			self.oclAsType(Controller).controllerDef()
-		else
-			self.oclAsType(RoboticPlatform).rpDef()
-		endif
-		
-context Context
-	def: contextEvents() : Bag(Event) = self.events->asBag()->union(self.interfaces.events)
-	
+
+			
 -- Connection well-formedness conditions (RoboChart reference 3.1.4)
 context Connection
 	-- Cn1: Connections of a module must associate only events of the robotic platform and its controllers
@@ -156,8 +82,7 @@ context Connection
 			and c.machines->including(c)->includes(self.to)
 		)
 	-- Cn4: Only events of the same type may be connected
-	-- TODO: need to make sure comparison is by value rather than identity
-	--inv Cn4: self.efrom.type = self.eto.type
+	-- NOTE: this requires and equality operator on RoboChart types
 	-- Cn5: Bidirectional connections of a module may only involve events of a controller which are connected by bidirectional connections within the controller
 	inv Cn5: (self.bidirec and RCModule.allInstances()->exists(m | m.connections->includes(self)))
 		implies (
@@ -198,9 +123,7 @@ context Connection
 		and ControllerDef.allInstances()->exists(c | c.connections->includes(self))
 		and self.from.oclIsKindOf(StateMachine)
 	) implies self.from.oclAsType(StateMachine).stmDef().ncInputEvents()->excludes(self.efrom)	
-	-- Cn10: The eto event of a connection must be an event of its to node and the efrom event of a connection must be an event of its from node
-	inv Cn10: self.to.connectionNodeContext().contextEvents()->includes(self.eto)
-		and self.from.connectionNodeContext().contextEvents()->includes(self.efrom)
+
 	
 -- Controllers well-formedness conditions (RoboChart reference 3.1.5)
 context ControllerDef
@@ -216,10 +139,10 @@ context ControllerDef
 	inv C1: self.machines->exists(true)
 	-- C2: Controllers cannot provide variables or operations to other controllers
 	inv C2: self.pInterfaces->collect(i | i.variableList.vars->union(i.operations))->isEmpty()
-	-- C3: All variables required by the controller’s state-machines must be defined or required by the controller
+	-- C3: All variables required by the controller's state-machines must be defined or required by the controller
 	inv C3: self.controllerRequiredVars()->union(self.controllerDefinedVars())
 		->includesAll(self.machines.stmDef().stmRequiredVars())
-	-- C4: All operations required by the controller’s state-machines must be required or defined by the controller
+	-- C4: All operations required by the controller's state-machines must be required or defined by the controller
 	inv C4: self.controllerRequiredOps()->union(self.lOperations)
 		->includesAll(self.machines.stmDef().stmRequiredOps())
 	-- C5: The names of variables, operations, and events are unique to the controller
@@ -238,6 +161,7 @@ context ControllerDef
 	)
 	-- C7: Operations must not be declared directly in a controller, but may be defined in the controller
 	inv C7: self.operations->isEmpty()
+
 	
 -- State Machines well-formedness conditions (RoboChart reference 3.1.6)
 context StateMachineDef
@@ -265,6 +189,7 @@ context StateMachineDef
 			.events->union(self.events).name)->isUnique(i | i)
 	-- STM6: State machines must not have operations declared directly within them
 	inv STM6: self.operations->isEmpty()
+
 	
 -- States well-formedness conditions (RoboChart reference 3.1.7)
 context State
@@ -276,6 +201,7 @@ context State
 	inv S2: self.actions->selectByKind(EntryAction)->size() <= 1
 		and self.actions->selectByKind(DuringAction)->size() <= 1
 		and self.actions->selectByKind(ExitAction)->size() <= 1
+
 		
 -- Initial Junctions well-formedness conditions (RoboChart reference 3.1.8)
 context Initial
@@ -287,26 +213,29 @@ context Initial
 		->one(t | t.source = self)
 	-- IJ3: All junction conditions apply
 	-- this is implicit since Initial inherits from Junction
-		
+
+	
 -- Junction well-formedness conditions (RoboChart reference 3.1.9)
 context Junction
 	-- J1: A junction must contain at least one outgoing transition
 	inv J1: NodeContainer.allInstances()->select(nc | nc.nodes->includes(self)).transitions
 		->exists(t | t.source = self)
 	-- J2: The guards of the transitions out of a junction must form a cover
-	-- cannot be checked in general, but does not prevent generation of semantics
+	-- NOTE: cannot be checked in general, but does not prevent generation of semantics
 --	inv J2: NodeContainer.allInstances()->select(nc | nc.nodes->includes(self)).transitions
 --		->select(t | t.source = self and t.condition <> null).condition
 	-- J3: Transitions starting in junctions cannot have triggers
 	inv J3: NodeContainer.allInstances()->select(nc | nc.nodes->includes(self)).transitions
 		->select(t | t.source = self)->forAll(t | t.trigger = null or t.trigger._type = TriggerType::EMPTY)
-			
+
+		
 -- Final states well-formedness conditions (RoboChart reference 3.1.10)
 context Final
 	-- FS1: Final states cannot be the source of transitions
 	inv FS1: NodeContainer.allInstances()->select(nc | nc.nodes->includes(self)).transitions
 		->select(t | t.source = self)->isEmpty()
-				
+
+		
 -- Triggers well-formedness conditions (RoboChart reference 3.1.11)
 context Trigger
 	-- Tg1: A trigger of type SIMPLE has neither the parameter attribute not the value attribute set. This is a pure synchronisations and does not involve exchange of values
@@ -322,6 +251,7 @@ context Trigger
 	inv Tg5: self._type = TriggerType::EMPTY
 		implies (self.event = null and self.parameter = null and self.value = null)
 
+		
 -- Transitions well-formedness conditions (RoboChart reference 3.1.12)
 context Transition
 	-- T1: The source and target of a transition must belong to the same container
@@ -334,6 +264,7 @@ context Transition
 			or self.trigger._type = TriggerType::EMPTY
 		)
 
+		
 -- Operations well-formedness conditions (RoboChart reference 3.1.13)
 context OperationDef
 	-- O1: All state-machine conditions apply to operation definitions
@@ -356,34 +287,17 @@ context OperationDef
 				.events->union(self.events)->isUnique(i | i)
 		-- STM6: State machines must not have operations declared directly within them
 		and self.operations->isEmpty()
+
 		
 -- Variables well-formedness conditions (RoboChart reference 3.1.14)
-context Variable
-	def: stateMachinesRequiringVar() : Set(StateMachine) = 
-		StateMachine.allInstances()->select(stm | stm.stmDef().rInterfaces.variableList.vars->includes(self))
-	def: controllersRequiringVar() : Set(Controller) = 
-		Controller.allInstances()->select(c | c.controllerDef().rInterfaces.variableList.vars->includes(self))
+--context Variable
 	-- V1: If the initial value of a required variable or constant of a state machine or controller is defined, it must be consistent with the initial value of any (complementing) variable provided or required by the contexts (controllers or modules) where the state machine or controller is used
-	-- TODO: need to figure out how to handle type and expression comparison
-	--inv V1: (self.initial <> null)
-	--	implies (
-	--		self.stateMachinesRequiringVar()->forAll(stm | 
-	--			ControllerDef.allInstances()->select(c | c.machines->includes(stm))
-	--			->collect(c | c.controllerDefinedVars()->union(c.controllerRequiredVars()))
-	--			->select(v | v.name = self.name and v.type = self.type)
-	--			->exists(v | v.initial = self.initial)
-	--		)
-	--		and self.controllersRequiringVar()->forAll(c | 
-	--			RCModule.allInstances()->select(m | m.nodes->includes(c))
-	--			->collect(m | m.moduleRP().rpDef().rpProvidedVars())
-	--			->select(v | v.name = self.name and v.type = self.type)
-	--			->exists(v | v.initial = self.initial)
-	--		)
-	--	)
-		
--- Expressions well-formedness conditions (needs adding to RoboChart reference)
+	-- NOTE: this requires expression evaluation in order to be properly defined
+
+	
+-- Expressions well-formedness conditions (RoboChart reference 3.1.15)
 	-- E1: The variables declared in a set comprehension must not have initial values
-	context SetComp
+context SetComp
 	inv E1:	self.variables->forAll(v | v.initial = null)
 	-- E2: Quantified variables in existential and universal quantifications must not have initial values
 	context QuantifierExpression
@@ -392,93 +306,17 @@ context Variable
 	context LambdaExp
 	inv E3: self.variables->forAll(v | v.initial = null)
 
--- function to determine children of an expression		
-context Expression
-	def: childExpressions() : Bag(Expression) = Bag{}
-context ArrayExp
-	def: childExpressions() : Bag(Expression) = Bag{self.value}->union(self.parameters)
-context BinaryExpression
-	def: childExpressions() : Bag(Expression) = Bag{self.left, self.right}
-context QuantifierExpression
-	def: childExpressions() : Bag(Expression) = Bag{self.suchthat, self.predicate}
-context LambdaExp
-	def: childExpressions() : Bag(Expression) = Bag{self.suchthat, self.expression}
-context IfExpression
-	def: childExpressions() : Bag(Expression) = Bag{self.condition, self.ifexp, self.elseexp}
-context LetExpression
-	def: childExpressions() : Bag(Expression) = Bag{self.expression}->union(self.declarations.value)
-context Not
-	def: childExpressions() : Bag(Expression) = Bag{self.exp}
-context InExp
-	def: childExpressions() : Bag(Expression) = Bag{self.member, self.set}
-context Neg
-	def: childExpressions() : Bag(Expression) = Bag{self.exp}
-context Selection
-	def: childExpressions() : Bag(Expression) = Bag{self.receiver}
-context AsExp
-	def: childExpressions() : Bag(Expression) = Bag{self.exp}
-context IsExp
-	def: childExpressions() : Bag(Expression) = Bag{self.exp}
-context ParExp
-	def: childExpressions() : Bag(Expression) = Bag{self.exp}
-context SeqExp
-	def: childExpressions() : Bag(Expression) = self.values->asBag()
-context SetExp
-	def: childExpressions() : Bag(Expression) = self.values->asBag()	
-context SetComp
-	def: childExpressions() : Bag(Expression) = Bag{self.predicate, self.expression}
-context SetRange
-	def: childExpressions() : Bag(Expression) = Bag{self.start, self.end}
-context TupleExp
-	def: childExpressions() : Bag(Expression) = self.values->asBag()
-context RangeExp
-	def: childExpressions() : Bag(Expression) = Bag{self.lrange, self.rrange}
-context CallExp --TODO: are functions in call expressions really expressions?
-	def: childExpressions() : Bag(Expression) = self.args->including(self.function)->asBag()
 
-context Expression
---	def: parentExpression() : Expression = 
---		Expression.allInstances()->any(e | e.oclContents()->includes(self))
-	def: parentIsTransition() : Boolean = 
-		if self.oclContainer().oclIsKindOf(Expression) then
-			self.oclContainer().oclAsType(Expression).parentIsTransition()
-		else
-			Transition.allInstances()->exists(t | t.condition = self)
-		endif
-	def: parentTransition() : Transition =
-		if self.oclContainer().oclIsKindOf(Expression) then
-			self.oclContainer().oclAsType(Expression).parentTransition()
-		else
-			self.oclContainer().oclAsType(Transition)
-		endif
---		Transition.allInstances()->any(t | 
---			t.condition = self 
---			or (self.parentExpression() <> null
---				and t = self.parentExpression().parentTransition())
---		)
-
-	def: ComparisonExpression() : Set(BinaryExpression) =
-		BinaryExpression.allInstances()->select(x | 
-			x.oclIsKindOf(Equals) or x.oclIsKindOf(Different)
-			or x.oclIsKindOf(GreaterThan) or x.oclIsKindOf(LessThan) 
-			or x.oclIsKindOf(GreaterOrEqual) or x.oclIsKindOf(LessOrEqual)
-		)
+-- Timed Expressions well-formedness conditions (RoboChart reference 3.2.1)
+	-- TE1: Expressions involving since(C) and sinceEntry(S) are only permitted in transition guards
+		-- corresponds to CE1 and SCE1 below
+	-- TE2: The clock C in an expression since(C) may only reference a clock declared within the expression's containing state-machine
+		-- corresponds to CE3 below
+	-- TE3: The state S in an expression sinceEntry(S) may only reference a state within the containing expression's state-machine. When the name S is ambiguous, because, for instance, there is a state and a substate with the same name in the state machine, the fully qualified name of the state S must be used.
+		-- corresponds to SCE3 below
+	-- TE4: The expressions since(C) or sinceEntry(S) may only occur in a comparison expression in which the other branch is a constant
+		-- corresponds to CE2 and SCE2 below
 		
---context Transition
---	def: transitionNodeContainer() : NodeContainer =
---		NodeContainer.allInstances()->any(nc | nc.transitions->includes(self))
---context NodeContainer
---	def: toplevelContainer() : StateMachineBody = null
---context StateMachineBody
---	def: toplevelContainer() : StateMachineBody = self
---context State
---	def: toplevelContainer() : StateMachineBody =
---		NodeContainer.allInstances()->any(nc | nc.nodes->includes(self)).toplevelContainer()
-	
-context NodeContainer
-	def: nestedStates() : Bag(State) =
-		self.nodes->selectByKind(State)->union(self.nodes->selectByKind(State).nestedStates())
-
 -- Clock expression well-formedness conditions
 context ClockExp
 	-- CE1: An expression since(C) may only occur as part of a transition guard
@@ -490,7 +328,7 @@ context ClockExp
 		or (comp.right = self 
 			and (comp.left.oclIsKindOf(IntegerExp) or comp.left.oclIsKindOf(FloatExp)))
 	)
-	-- CE3: The clock C in an expression since(C) may only reference a clock declared within the expression’s containing state-machine
+	-- CE3: The clock C in an expression since(C) may only reference a clock declared within the expression's containing state-machine
 	inv CE3: self.parentIsTransition() implies
 		self.parentTransition().containingStateMachine().clocks->includes(self.clock)
 
@@ -505,22 +343,113 @@ context StateClockExp
 		or (comp.right = self 
 			and (comp.left->oclIsKindOf(IntegerExp) or comp.left->oclIsKindOf(FloatExp)))
 	)
-	-- SCE3: The state S in an expression sinceEntry(S) may only reference a state within the containing expression’s state-machine. When the name S is ambiguous, because, for instance, there is a state and a substate with the same name in the state machine, the fully qualified name of the state S must be used.
+	-- SCE3: The state S in an expression sinceEntry(S) may only reference a state within the containing expression's state-machine. When the name S is ambiguous, because, for instance, there is a state and a substate with the same name in the state machine, the fully qualified name of the state S must be used.
 	-- the state is referenced, not named in the metamodel, so the well-formedness conditions here are not concerned with resolving the ambiguity
 	inv SCE3: self.parentIsTransition() implies
 		self.parentTransition().containingStateMachine().nestedStates()->includes(self.state)
 
--- Timed Expressions well-formedness conditions (RoboChart reference 3.2.1)
-	-- TE1: Expressions involving since(C) and sinceEntry(S) are only permitted in transition guards
-		-- corresponds to CE1 and SCE1
-	-- TE2: The clock C in an expression since(C) may only reference a clock declared within the expression’s containing state-machine
-		-- corresponds to CE3
-	-- TE3: The state S in an expression sinceEntry(S) may only reference a state within the containing expression’s state-machine. When the name S is ambiguous, because, for instance, there is a state and a substate with the same name in the state machine, the fully qualified name of the state S must be used.
-		-- corresponds to SCE3
-	-- TE4: The expressions since(C) or sinceEntry(S) may only be compared with a constant expression, and only when using one of the following operators: >, <, >=, <=, ==. A consequence of this restriction is that no expression can compare the value of two clocks as given by since(C) or sinceEntry(S)
-		-- TE4': The expressions since(C) or sinceEntry(S) may only occur in a comparison expression in which the other branch is a constant
-		-- corresponds to CE2 and SCE2
+		
+-- Timed Statements well-formedness conditions (RoboChart reference 3.2.2)
+context ClockReset
+	-- TS1: A clock reset #C may only reference a clock declared within the action's containing state-machine, or in the case of a trigger, within the trigger's containing state-machine
+	inv TS1: self.containingStateMachine().clocks->includes(self.clock)
 
+	
+-- Auxiliary definitions
+	
+-- function to extract RoboticPlatformDef from a RoboticPlatform (which may be a ref)
+context RoboticPlatform
+	def: rpDef() : RoboticPlatformDef = 
+ 		if self.oclIsKindOf(RoboticPlatformDef) then 
+			self.oclAsType(RoboticPlatformDef)
+		else 
+			self.oclAsType(RoboticPlatformRef).ref
+		endif
+-- function to extract ControllerDef from a Controller (which may be a ref)
+context Controller
+	def: controllerDef() : ControllerDef = 
+		if self.oclIsKindOf(ControllerDef) then 
+			self.oclAsType(ControllerDef)
+		else 
+			self.oclAsType(ControllerRef).ref
+		endif
+-- function to extract StateMachineDef from a StateMachine (which may be a ref)
+context StateMachine
+	def: stmDef() : StateMachineDef = 
+		if self.oclIsKindOf(StateMachineDef) then 
+			self.oclAsType(StateMachineDef)
+		else 
+			self.oclAsType(StateMachineRef).ref
+		endif
+
+-- functions to get input and output events of a node container
+-- (An event is considered to be an output if it is used in an OUPUT or SYNC trigger, 
+-- 	or if it is used in an OUTPUT, SYNC or SIMPLE send statement.)
+-- (An event is considered to be an input if it is used in an INPUT or SIMPLE trigger, 
+-- 	or if it is used in an INPUT send statement.)
+context NodeContainer
+	def: ncInputEvents() : Bag(Event) =
+		self.transitions->select(t | t.trigger <> null and 
+			(t.trigger._type = TriggerType::INPUT or t.trigger._type = TriggerType::SIMPLE)
+		).trigger.event
+		->union(self.transitions->select(t | t.action <> null).action.statementInputEvents())
+		->union(self.nodes->selectByKind(NodeContainer).ncInputEvents())
+		->union(self.nodes->selectByKind(State).actions.action.statementInputEvents())
+	def: ncOutputEvents() : Bag(Event) =
+		self.transitions->select(t | t.trigger <> null and 
+			(t.trigger._type = TriggerType::OUTPUT or t.trigger._type = TriggerType::SYNC)
+		).trigger.event
+		->union(self.transitions->select(t | t.action <> null).action.statementOutputEvents())
+		->union(self.nodes->selectByKind(NodeContainer).ncOutputEvents())
+		->union(self.nodes->selectByKind(State).actions.action.statementOutputEvents())
+context Statement
+	def: statementInputEvents() : Bag(Event) = Bag{}
+	def: statementOutputEvents() : Bag(Event) = Bag{}
+context SendEvent
+	def: statementInputEvents() : Bag(Event) =
+		Set{self.trigger}->select(t | t._type = TriggerType::INPUT).event
+	def: statementOutputEvents() : Bag(Event) =
+		Set{self.trigger}->select(t | Set{TriggerType::OUTPUT, TriggerType::SYNC, TriggerType::SIMPLE}->includes(t._type)).event
+context SeqStatement
+	def: statementInputEvents() : Bag(Event) =
+		self.statements.statementInputEvents()->asBag()
+	def: statementOutputEvents() : Bag(Event) =
+		self.statements.statementOutputEvents()->asBag()
+context IfStmt
+	def: statementInputEvents() : Bag(Event) =
+		self._'then'.statementInputEvents()->union(self._'else'.statementInputEvents())
+	def: statementOutputEvents() : Bag(Event) =
+		self._'then'.statementOutputEvents()->union(self._'else'.statementOutputEvents())
+
+-- functions on expressions to support timed expressions well-formedness conditions
+context Expression
+	def: parentIsTransition() : Boolean = 
+		if self.oclContainer().oclIsKindOf(Expression) then
+			self.oclContainer().oclAsType(Expression).parentIsTransition()
+		else
+			Transition.allInstances()->exists(t | t.condition = self)
+		endif
+	def: parentTransition() : Transition =
+		if self.oclContainer().oclIsKindOf(Expression) then
+			self.oclContainer().oclAsType(Expression).parentTransition()
+		else
+			self.oclContainer().oclAsType(Transition)
+		endif
+
+	def: ComparisonExpression() : Set(BinaryExpression) =
+		BinaryExpression.allInstances()->select(x | 
+			x.oclIsKindOf(Equals) or x.oclIsKindOf(Different)
+			or x.oclIsKindOf(GreaterThan) or x.oclIsKindOf(LessThan) 
+			or x.oclIsKindOf(GreaterOrEqual) or x.oclIsKindOf(LessOrEqual)
+		)
+
+-- function to obtain all states nested within a node container
+context NodeContainer
+	def: nestedStates() : Bag(State) =
+		self.nodes->selectByKind(State)->union(self.nodes->selectByKind(State).nestedStates())
+
+		-- functions to find the containing state machine for various constructs,
+		-- particularly ClockReset to define the timed statement well-formedness conditions
 context NodeContainer
 	def: containingStateMachine() : StateMachineBody =
 		if self.oclIsKindOf(StateMachineBody) then 
@@ -550,8 +479,6 @@ context Trigger
 		else
 			self.oclContainer().oclAsType(Statement).containingStateMachine()
 		endif
-
--- Timed Statements well-formedness conditions (RoboChart reference 3.2.2)
 context ClockReset
 	def: containingStateMachine() : StateMachineBody =
 		if self.oclContainer().oclIsKindOf(Action) then
@@ -561,8 +488,5 @@ context ClockReset
 		else
 			self.oclContainer().oclAsType(Statement).containingStateMachine()
 		endif
-	
-	-- TS1: A clock reset #C may only reference a clock declared within the action’s containing state-machine, or in the case of a trigger, within the trigger’s containing state-machine
-	inv TS1: self.containingStateMachine().clocks->includes(self.clock)
 		
 endpackage
