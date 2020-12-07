@@ -934,10 +934,16 @@
     <semanticResources>java:/Objects/com.google.common.annotations.GwtCompatible</semanticResources>
     <semanticResources>../RoboChart.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+    <semanticResources>robochart.ocl</semanticResources>
+    <semanticResources>robochart.ocl.oclas</semanticResources>
+    <semanticResources>robochart.ecore.oclas</semanticResources>
+    <semanticResources>http://www.eclipse.org/emf/2002/Ecore.oclas</semanticResources>
+    <semanticResources>http://www.eclipse.org/ocl/2015/Orphanage.oclas</semanticResources>
     <semanticResources>robochart.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_a2oLoGdPEemnw9oydYBvpQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_a6mFoGdPEemnw9oydYBvpQ" name="RCPackage" repPath="#_a3wNAGdPEemnw9oydYBvpQ" changeId="6e96886a-0f77-4055-86f9-5fd48f366e4b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_a6mFoGdPEemnw9oydYBvpQ" name="package_structure" repPath="#_a3wNAGdPEemnw9oydYBvpQ" changeId="0d207a91-333a-4625-8c6d-b4eb0b10d2cc">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="robochart.ecore#/"/>
       </ownedRepresentationDescriptors>
