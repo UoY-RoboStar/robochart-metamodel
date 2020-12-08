@@ -31,7 +31,7 @@ deploy:
         code: |-
           ./upload.sh
 
-send_email:
+send_emails:
   steps:
     - install-packages:
        packages: jq
