@@ -226,7 +226,7 @@ context Junction
 --		->select(t | t.source = self and t.condition <> null).condition
 	-- J3: Transitions starting in junctions cannot have triggers
 	inv J3: NodeContainer.allInstances()->select(nc | nc.nodes->includes(self)).transitions
-		->select(t | t.source = self)->forAll(t | t.trigger = null or t.trigger._type = TriggerType::EMPTY)
+		->select(t | t.source = self)->forAll(t | t.trigger = null)
 
 		
 -- Final states well-formedness conditions (RoboChart reference 3.1.10)
@@ -237,19 +237,16 @@ context Final
 
 		
 -- Triggers well-formedness conditions (RoboChart reference 3.1.11)
-context Trigger
+context Communication
 	-- Tg1: A trigger of type SIMPLE has neither the parameter attribute not the value attribute set. This is a pure synchronisations and does not involve exchange of values
-	inv Tg1: self._type = TriggerType::SIMPLE implies (self.parameter = null and self.value = null)
+	inv Tg1: self._type = CommunicationType::SIMPLE implies (self.parameter = null and self.value = null)
 	-- Tg2: A trigger of type SIMPLE must use a typeless event. This is a pure synchronisations and does not involve exchange of values
-	inv Tg2: self._type = TriggerType::SIMPLE implies (self.event <> null and self.event.type = null)
+	inv Tg2: self._type = CommunicationType::SIMPLE implies (self.event <> null and self.event.type = null)
 	-- Tg3: A trigger of type INPUT must have a parameter attribute and cannot have its value attribute set
-	inv Tg3: self._type = TriggerType::INPUT implies (self.parameter <> null and self.value = null)
+	inv Tg3: self._type = CommunicationType::INPUT implies (self.parameter <> null and self.value = null)
 	-- Tg4: A trigger of type OUPUT or SYNC must have a value attribute and cannot have its parameter attribute set
-	inv Tg4: (self._type = TriggerType::OUTPUT or self._type = TriggerType::SYNC)
+	inv Tg4: (self._type = CommunicationType::OUTPUT or self._type = CommunicationType::SYNC)
 		implies (self.value <> null and self.parameter = null)
-	-- Tg5: A trigger of type empty must not have its attributes event, parameter and value set
-	inv Tg5: self._type = TriggerType::EMPTY
-		implies (self.event = null and self.parameter = null and self.value = null)
 
 		
 -- Transitions well-formedness conditions (RoboChart reference 3.1.12)
@@ -259,9 +256,8 @@ context Transition
 		->one(nc | nc.nodes->includes(self.source) and nc.nodes->includes(self.target))
 	-- T2: If a transition has a trigger, it must be of type INPUT or SIMPLE
 	inv T2: self.trigger <> null
-		implies (self.trigger._type = TriggerType::INPUT
-			or self.trigger._type = TriggerType::SIMPLE
-			or self.trigger._type = TriggerType::EMPTY
+		implies (self.trigger._type = CommunicationType::INPUT
+			or self.trigger._type = CommunicationType::SIMPLE
 		)
 
 		
@@ -390,14 +386,14 @@ context StateMachine
 context NodeContainer
 	def: ncInputEvents() : Bag(Event) =
 		self.transitions->select(t | t.trigger <> null and 
-			(t.trigger._type = TriggerType::INPUT or t.trigger._type = TriggerType::SIMPLE)
+			(t.trigger._type = CommunicationType::INPUT or t.trigger._type = CommunicationType::SIMPLE)
 		).trigger.event
 		->union(self.transitions->select(t | t.action <> null).action.statementInputEvents())
 		->union(self.nodes->selectByKind(NodeContainer).ncInputEvents())
 		->union(self.nodes->selectByKind(State).actions.action.statementInputEvents())
 	def: ncOutputEvents() : Bag(Event) =
 		self.transitions->select(t | t.trigger <> null and 
-			(t.trigger._type = TriggerType::OUTPUT or t.trigger._type = TriggerType::SYNC)
+			(t.trigger._type = CommunicationType::OUTPUT or t.trigger._type = CommunicationType::SYNC)
 		).trigger.event
 		->union(self.transitions->select(t | t.action <> null).action.statementOutputEvents())
 		->union(self.nodes->selectByKind(NodeContainer).ncOutputEvents())
@@ -407,9 +403,9 @@ context Statement
 	def: statementOutputEvents() : Bag(Event) = Bag{}
 context SendEvent
 	def: statementInputEvents() : Bag(Event) =
-		Set{self.trigger}->select(t | t._type = TriggerType::INPUT).event
+		Set{self.trigger}->select(t | t._type = CommunicationType::INPUT).event
 	def: statementOutputEvents() : Bag(Event) =
-		Set{self.trigger}->select(t | Set{TriggerType::OUTPUT, TriggerType::SYNC, TriggerType::SIMPLE}->includes(t._type)).event
+		Set{self.trigger}->select(t | Set{CommunicationType::OUTPUT, CommunicationType::SYNC, CommunicationType::SIMPLE}->includes(t._type)).event
 context SeqStatement
 	def: statementInputEvents() : Bag(Event) =
 		self.statements.statementInputEvents()->asBag()
@@ -472,7 +468,7 @@ context Statement
 		else
 			self.oclContainer().oclAsType(Statement).containingStateMachine()
 		endif
-context Trigger
+context Communication
 	def: containingStateMachine() : StateMachineBody =
 		if self.oclContainer().oclIsKindOf(Transition) then
 			self.oclContainer().oclAsType(Transition).containingStateMachine()
@@ -483,8 +479,8 @@ context ClockReset
 	def: containingStateMachine() : StateMachineBody =
 		if self.oclContainer().oclIsKindOf(Action) then
 			self.oclContainer().oclAsType(Action).containingStateMachine()
-		elseif self.oclContainer().oclIsKindOf(Trigger) then
-			self.oclContainer().oclAsType(Trigger).containingStateMachine()
+		elseif self.oclContainer().oclIsKindOf(Communication) then
+			self.oclContainer().oclAsType(Communication).containingStateMachine()
 		else
 			self.oclContainer().oclAsType(Statement).containingStateMachine()
 		endif
