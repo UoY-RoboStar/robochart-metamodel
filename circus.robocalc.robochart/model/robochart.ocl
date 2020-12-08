@@ -401,11 +401,11 @@ context NodeContainer
 context Statement
 	def: statementInputEvents() : Bag(Event) = Bag{}
 	def: statementOutputEvents() : Bag(Event) = Bag{}
-context SendEvent
+context CommunicationStmt
 	def: statementInputEvents() : Bag(Event) =
-		Set{self.trigger}->select(t | t._type = CommunicationType::INPUT).event
+		Set{self.communication}->select(t | t._type = CommunicationType::INPUT).event
 	def: statementOutputEvents() : Bag(Event) =
-		Set{self.trigger}->select(t | Set{CommunicationType::OUTPUT, CommunicationType::SYNC, CommunicationType::SIMPLE}->includes(t._type)).event
+		Set{self.communication}->select(t | Set{CommunicationType::OUTPUT, CommunicationType::SYNC, CommunicationType::SIMPLE}->includes(t._type)).event
 context SeqStatement
 	def: statementInputEvents() : Bag(Event) =
 		self.statements.statementInputEvents()->asBag()
