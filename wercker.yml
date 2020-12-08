@@ -30,3 +30,13 @@ deploy:
         name: uploading update site
         code: |-
           ./upload.sh
+
+send_email:
+  steps:
+    - install-packages:
+       packages: jq
+    - script:
+        name: sending emails to robotool list
+        code: |-
+          ./send_emails.sh
+
