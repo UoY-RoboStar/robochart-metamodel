@@ -25,7 +25,7 @@ deploy:
     - add-to-known_hosts:
         hostname: $ROBOSTAR_WEB_HOST
         fingerprint: $ROBOSTAR_WEB_SSH_FINGERPRINT
-        type: rsa
+        type: $ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE
     - script:
         name: uploading update site
         code: |-
