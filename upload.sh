@@ -26,6 +26,9 @@ then
   mkdir $dest
   cp -r ../$dir/* $dest
   
+  # Deploy a copy of the ECore file as well
+  cp ../circus.robocalc.robochart/model/robochart.ecore $dest
+  
   # In the new host, it is not possible to generate a symlink that points to
   # a non-existent target, such as 'update', before it is actually created.
   # So here we first transfer the update folder, then create the symlink and
