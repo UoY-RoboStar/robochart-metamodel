@@ -1,5 +1,5 @@
-import robochart : 'robochart.ecore'
-import 'http://www.eclipse.org/emf/2002/Ecore'
+import 'http://www.robocalc.circus/RoboChart' -- http://www.robocalc.circus/RoboChart
+--import 'http://www.eclipse.org/emf/2002/Ecore'
 
 package robochart
 
@@ -234,6 +234,10 @@ context Final
 	-- FS1: Final states cannot be the source of transitions
 	inv FS1: NodeContainer.allInstances()->select(nc | nc.nodes->includes(self)).transitions
 		->select(t | t.source = self)->isEmpty()
+	-- FS2: Final states cannot have actions
+	inv FS2: self.actions->isEmpty()
+	-- FS3: Final states cannot have states or transitions
+	inv FS3: self.nodes->isEmpty() and self.transitions->isEmpty()
 
 		
 -- Triggers well-formedness conditions (RoboChart reference 3.1.11)
@@ -308,7 +312,7 @@ context SetComp
 		-- corresponds to CE1 and SCE1 below
 	-- TE2: The clock C in an expression since(C) may only reference a clock declared within the expression's containing state-machine
 		-- corresponds to CE3 below
-	-- TE3: The state S in an expression sinceEntry(S) may only reference a state within the containing expression's state-machine. When the name S is ambiguous, because, for instance, there is a state and a substate with the same name in the state machine, the fully qualified name of the state S must be used.
+	-- TE3: The state S in an expression sinceEntry(S) may only reference a state, and not a Final state, within the containing expression’s state-machine
 		-- corresponds to SCE3 below
 	-- TE4: The expressions since(C) or sinceEntry(S) may only occur in a comparison expression in which the other branch is a constant
 		-- corresponds to CE2 and SCE2 below
@@ -339,10 +343,9 @@ context StateClockExp
 		or (comp.right = self 
 			and (comp.left->oclIsKindOf(IntegerExp) or comp.left->oclIsKindOf(FloatExp)))
 	)
-	-- SCE3: The state S in an expression sinceEntry(S) may only reference a state within the containing expression's state-machine. When the name S is ambiguous, because, for instance, there is a state and a substate with the same name in the state machine, the fully qualified name of the state S must be used.
-	-- the state is referenced, not named in the metamodel, so the well-formedness conditions here are not concerned with resolving the ambiguity
+	-- SCE3: The state S in an expression sinceEntry(S) may only reference a state, and not a Final state, within the containing expression’s state-machine
 	inv SCE3: self.parentIsTransition() implies
-		self.parentTransition().containingStateMachine().nestedStates()->includes(self.state)
+		self.parentTransition().containingStateMachine().nestedStates()->includes(self.state) and not self.state.oclIsKindOf(Final)
 
 		
 -- Timed Statements well-formedness conditions (RoboChart reference 3.2.2)

@@ -940,6 +940,9 @@
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore.oclas</semanticResources>
     <semanticResources>http://www.eclipse.org/ocl/2015/Orphanage.oclas</semanticResources>
     <semanticResources>robochart.genmodel</semanticResources>
+    <semanticResources>../ocl-tests/Cn10-invalid.xmi</semanticResources>
+    <semanticResources>../ocl-tests/C1-invalid1.xmi</semanticResources>
+    <semanticResources>ocl-tests/C1-invalid1.xmi</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_a2oLoGdPEemnw9oydYBvpQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_a6mFoGdPEemnw9oydYBvpQ" name="package_structure" repPath="#_a3wNAGdPEemnw9oydYBvpQ" changeId="0d207a91-333a-4625-8c6d-b4eb0b10d2cc">
