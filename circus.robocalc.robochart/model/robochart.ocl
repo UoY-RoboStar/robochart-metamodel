@@ -27,6 +27,9 @@ context RoboticPlatformDef
 			.operations->union(self.operations).name)
 		->union(self->collect(c | c.interfaces->union(c.rInterfaces)->union(c.pInterfaces))
 			.events->union(self.events).name)->isUnique(i | i)
+	-- RP4: Robotic platforms cannot contain clocks
+	inv RP4: self->collect(c | c.interfaces->union(c.rInterfaces)->union(c.pInterfaces))
+			.clocks->isEmpty()
 
 			
 -- Interfaces well-formedness conditions (RoboChart reference 3.1.2)
