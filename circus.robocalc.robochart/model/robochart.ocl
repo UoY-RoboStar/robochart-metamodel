@@ -34,16 +34,19 @@ context RoboticPlatformDef
 			
 -- Interfaces well-formedness conditions (RoboChart reference 3.1.2)
 context Interface
-	-- I1: Provided and required interfaces contain only variables and operations
-	inv I1: Context.allInstances()->collect(c | c.pInterfaces->union(c.rInterfaces))->includes(self)
-		implies self.events->isEmpty()
-	-- I2: Defined interfaces contain only variables and events
+	-- I1: Provided interfaces contain only variables and operations, and required interfaces contain only variables, operation and clocks
+	inv I1: (Context.allInstances()->collect(pInterfaces)->includes(self) 
+			implies (self.events->isEmpty() and self.clocks->isEmpty()))
+		and (Context.allInstances()->collect(rInterfaces)->includes(self)
+			implies self.events->isEmpty())
+	-- I2: Defined interfaces contain only variables, events and clocks
 	inv I2: Context.allInstances().interfaces->includes(self)
 		implies self.operations->isEmpty()
-	-- I3: Names of variables, events and operations are unique
+	-- I3: Names of variables, events, clocks and operations are unique
 	inv I3: self.variableList.vars.name
 		->union(self.operations->asBag().name)
-		->union(self.events->asBag().name)->isUnique(i | i)
+		->union(self.events->asBag().name)
+		->union(self.clocks->asBag().name)->isUnique(i | i)
 
 		
 -- Modules well-formedness conditions (RoboChart reference 3.1.3)
