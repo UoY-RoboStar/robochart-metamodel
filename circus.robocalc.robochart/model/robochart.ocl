@@ -209,7 +209,22 @@ context StateMachineDef
 			.events->union(self.events).name)->isUnique(i | i)
 	-- STM6: State machines must not have operations declared directly within them
 	inv STM6: self.operations->isEmpty()
-
+	-- STM7: State machines must not require interfaces containing clocks (only use them)
+	inv STM7: self.rInterfaces.clocks->isEmpty()
+-- STM8 and STM9 are defined checked over controllers
+context ControllerDef
+	-- STM8: A state machine that requires an operation, including a machine that defines another operation, must define or require all variables required by that operation
+	 inv STM8: self.machines.stmDef()->forAll( s | 
+	 	self.lOperations.opDef()->select( o | s.stmRequiredOps()->exists( os | os.name = o.name and os.parameters = o.parameters))->forAll( o |
+	 		s.stmRequiredVars()->union(s.stmDefinedVars())->includes(o.rInterfaces.variableList.vars)
+	 	)
+	 )
+	-- STM9: A state machine that requires an operation, including a machine that defines another operation, must define all events defined in that operation
+	inv STM9: self.machines.stmDef()->forAll( s | 
+	 	self.lOperations.opDef()->select( o | s.stmRequiredOps()->exists( os | os.name = o.name and os.parameters = o.parameters))->forAll( o |
+	 		s.stmDefinedEvents()->includes(o.opDefinedEvents())
+	 	)
+	 )
 	
 -- States well-formedness conditions (RoboChart reference 3.1.7)
 context State
@@ -287,6 +302,11 @@ context Transition
 		
 -- Operations well-formedness conditions (RoboChart reference 3.1.13)
 context OperationDef
+	def: opDefinedVars() : Bag(Variable) =
+		self.interfaces.variableList.vars->union(self.variableList.vars)
+	def: opDefinedEvents() : Bag(Event) = self.interfaces.events->union(self.events)
+	def: opRequiredVars() : Bag(Variable) = self.rInterfaces.variableList.vars
+	def: opRequiredOps() : Bag(OperationSig) = self.rInterfaces.operations
 	-- O1: All state-machine conditions apply to operation definitions
 	inv O1: 
 		-- STM1: State machines cannot have provided interfaces
