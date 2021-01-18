@@ -167,7 +167,17 @@ context ControllerDef
 	)
 	-- C7: Operations must not be declared directly in a controller, but may be defined in the controller
 	inv C7: self.operations->isEmpty()
-
+	-- C8: Operations referenced in a controller must be unique, that is, there must not be two or more references to the same operation
+	inv C8: self.lOperations->select(oclIsKindOf(OperationRef)).oclAsType(OperationRef)->isUnique(ref)
+	-- C9: Controllers cannot have clocks
+	inv C9: self.clocks->isEmpty()
+	-- C10: Controllers cannot define interfaces that contain clocks
+	inv C10: self.interfaces.clocks->isEmpty()
+	-- C11: Controllers cannot require interfaces that contain clocks
+	inv C11: self.rInterfaces.clocks->isEmpty()
+	-- C12: The operations defined in a controller can require only operations that are either defined or required by that controller
+	inv C12: self.lOperations.opDef().oclAsType(OperationSig)->union(self.controllerRequiredOps())
+		->includesAll(self.lOperations->select(oclIsKindOf(OperationDef)).oclAsType(OperationDef).rInterfaces.operations)
 	
 -- State Machines well-formedness conditions (RoboChart reference 3.1.6)
 context StateMachineDef
@@ -385,6 +395,14 @@ context StateMachine
 			self.oclAsType(StateMachineDef)
 		else 
 			self.oclAsType(StateMachineRef).ref
+		endif
+-- function to extract OperationDef from an Operation
+context Operation
+	def: opDef() : OperationDef =
+		if self.oclIsKindOf(OperationDef) then
+			self.oclAsType(OperationDef)
+		else
+			self.oclAsType(OperationRef).ref
 		endif
 
 -- functions to get input and output events of a node container
