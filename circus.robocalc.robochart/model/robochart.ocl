@@ -347,7 +347,16 @@ context SetComp
 	inv E3: self.variables->forAll(v | v.initial = null)
 
 
--- Timed Expressions well-formedness conditions (RoboChart reference 3.2.1)
+-- Timed State Machines well-formedness conditions (RoboChart reference 3.2.1)
+context ControllerDef
+	-- TSTM1: A state machine that requires an operation, including a machine that defines another operation, must define or require all clocks required in that operation
+	 inv TSTM1: self.machines.stmDef()->forAll( s | 
+	 	self.lOperations.opDef()->select( o | s.stmRequiredOps()->exists( os | os.name = o.name and os.parameters = o.parameters))->forAll( o |
+	 		s.rInterfaces.clocks->union(s.interfaces.clocks)->union(s.clocks)->includes(o.rInterfaces.clocks)
+	 	)
+	 )
+
+-- Timed Expressions well-formedness conditions (RoboChart reference 3.2.2)
 	-- TE1: Expressions involving since(C) and sinceEntry(S) are only permitted in transition guards
 		-- corresponds to CE1 and SCE1 below
 	-- TE2: The clock C in an expression since(C) may only reference a clock declared within the expression's containing state-machine
@@ -388,11 +397,13 @@ context StateClockExp
 		self.parentTransition().containingStateMachine().nestedStates()->includes(self.state) and not self.state.oclIsKindOf(Final)
 
 		
--- Timed Statements well-formedness conditions (RoboChart reference 3.2.2)
+-- Timed Statements well-formedness conditions (RoboChart reference 3.2.3)
 context ClockReset
 	-- TS1: A clock reset #C may only reference a clock declared within the action's containing state-machine, or in the case of a trigger, within the trigger's containing state-machine
 	inv TS1: self.containingStateMachine().clocks->includes(self.clock)
-
+--context Wait
+	-- TS2: In a non-deterministic wait([m,n]) the condition m<n must hold
+	-- TODO: need clarification on expression evaluation
 	
 -- Auxiliary definitions
 	
