@@ -3,6 +3,10 @@ import 'http://www.robocalc.circus/RoboChart' -- http://www.robocalc.circus/Robo
 
 package robochart
 
+-- uniqueness of names within a scope
+context NamedElement
+	inv name_unique: self.oclContainer().oclContents()->select(oclIsKindOf(NamedElement)).oclAsType(NamedElement).name->one( n | n = self.name)
+
 -- Robotic Platforms well-formedness conditions (RoboChart reference 3.1.1)
 context RoboticPlatformDef
 	-- We note that variables and operations declared directly in the platform,
