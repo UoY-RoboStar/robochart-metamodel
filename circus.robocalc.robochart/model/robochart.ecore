@@ -112,7 +112,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NameType" eSuperTypes="#//TypeDecl">
+  <eClassifiers xsi:type="ecore:EClass" name="NamedType" eSuperTypes="#//TypeDecl">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Named Types"/>
     </eAnnotations>

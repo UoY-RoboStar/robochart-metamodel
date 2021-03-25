@@ -56,8 +56,8 @@
     <genClasses ecoreClass="robochart.ecore#//Literal">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//Literal/types"/>
     </genClasses>
-    <genClasses ecoreClass="robochart.ecore#//NameType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//NameType/type"/>
+    <genClasses ecoreClass="robochart.ecore#//NamedType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference robochart.ecore#//NamedType/type"/>
     </genClasses>
     <genClasses image="false" ecoreClass="robochart.ecore#//Type"/>
     <genClasses ecoreClass="robochart.ecore#//ProductType">
