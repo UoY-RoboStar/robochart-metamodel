@@ -34,12 +34,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
       
-      #- name: Add SSH known hosts
-      #  run: echo "${ROBOSTAR_WEB_HOST} ${ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE} ${ROBOSTAR_WEB_SSH_FINGERPRINT}" >> ~/.ssh/known_hosts
-      #  env:
-      #    ROBOSTAR_WEB_HOST: ${{ secrets.ROBOSTAR_WEB_HOST }}
-      #    ROBOSTAR_WEB_SSH_FINGERPRINT: ${{ secrets.ROBOSTAR_WEB_SSH_FINGERPRINT }}
-      #    ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE: ${{ secrets.ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE }}
+      - name: Add SSH known hosts
+        run: echo "${ROBOSTAR_WEB_HOST} ${ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE} ${ROBOSTAR_WEB_SSH_FINGERPRINT}" >> ~/.ssh/known_hosts
+        env:
+          ROBOSTAR_WEB_HOST: ${{ secrets.ROBOSTAR_WEB_HOST }}
+          ROBOSTAR_WEB_SSH_FINGERPRINT: ${{ secrets.ROBOSTAR_WEB_SSH_FINGERPRINT }}
+          ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE: ${{ secrets.ROBOSTAR_WEB_SSH_FINGERPRINT_TYPE }}
         
       # This should now be whitelisted?
       #- name: Setup SSH
@@ -67,7 +67,22 @@ jobs:
       #  env: 
       #    MAILCHIMPKEY: ${{ secrets.MAILCHIMPKEY }}
       #    MAILCHIMPUSR: ${{ secrets.MAILCHIMPUSR }}
-
+      
+      - name: Recompile Textual Editor
+        run: |
+          # Propagate recompilation if global flag is active
+          if [[ -z ${ROBOSTAR_RECOMPILE_ALL} || ${ROBOSTAR_RECOMPILE_ALL} = false ]]; then
+            echo "Recompilation is disabled or not set."
+          else
+            curl -H 'Authorization: token $ROBOSTAR_GITHUB_ACTIONS_TOKEN' \
+                 --request POST \
+                 --data '{event_type:"recompile"}' \
+                 https://api.github.com/repos/UoY-RoboStar/robochart-textual/dispatches
+          fi
+        env:
+          ROBOSTAR_RECOMPILE_ALL: ${{ secrets.ROBOSTAR_RECOMPILE_ALL }}
+          ROBOSTAR_GITHUB_ACTIONS_TOKEN: ${{ secrets.ROBOSTAR_GITHUB_ACTIONS_TOKEN }}
+          
       #- name: The job has failed
       #  if: failure()
       #  run: rm -rf /tmp/$GITHUB_RUN_NUMBER
