@@ -75,8 +75,8 @@ jobs:
             echo "Recompilation is disabled or not set."
           else
             curl -H 'Authorization: token $ROBOSTAR_GITHUB_ACTIONS_TOKEN' \
-                 --request POST \
-                 --data '{event_type:"recompile"}' \
+                 -X POST \
+                 -d '{"event_type":"recompile"}' \
                  https://api.github.com/repos/UoY-RoboStar/robochart-textual/dispatches
           fi
         env:
