@@ -70,7 +70,7 @@ jobs:
           else
             curl -H "Authorization: token ${ROBOSTAR_GITHUB_ACTIONS_TOKEN}" \
                  -X POST \
-                 -d '{"event_type":"recompile"}' \
+                 -d '{"event_type":"rebuild"}' \
                  https://api.github.com/repos/UoY-RoboStar/robochart-textual/dispatches
           fi
         env:
