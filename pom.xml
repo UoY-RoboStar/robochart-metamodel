@@ -15,12 +15,13 @@ SPDX-License-Identifier: EPL-2.0
     <packaging>pom</packaging>
 
     <properties>
-        <tycho.version>1.4.0</tycho.version>
-        <maven.compiler.source>8</maven.compiler.source>
-		<maven.compiler.target>8</maven.compiler.target>
+        <tycho.version>1.7.0</tycho.version>
+        <mwe2Version>2.12.1</mwe2Version>
+        <maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <eclipse-repo.url>http://download.eclipse.org/releases/2019-03</eclipse-repo.url>
-        <xtext.version>2.18.0</xtext.version>
+        <eclipse-repo.url>http://download.eclipse.org/releases/2021-06</eclipse-repo.url>
+        <xtext.version>2.25.0</xtext.version>
     </properties>
 
     <modules>
@@ -30,7 +31,17 @@ SPDX-License-Identifier: EPL-2.0
         <module>circus.robocalc.robochart.feature</module>
         <module>circus.robocalc.robochart.update</module>
     </modules>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-dev-bom</artifactId>
+				<version>${xtext.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
     <repositories>
         <repository>
             <id>eclipse-release</id>
@@ -38,7 +49,6 @@ SPDX-License-Identifier: EPL-2.0
             <layout>p2</layout>
         </repository>
     </repositories>
-
     <build>
         <plugins>
             <plugin>
@@ -100,12 +110,6 @@ SPDX-License-Identifier: EPL-2.0
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <excludes>
-                        <!-- provide plug-ins not containing any source code -->
-                        <plugin id="lang1.update" />
-                    </excludes>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
