@@ -355,8 +355,13 @@ context ControllerDef
 	 		s.rInterfaces.clocks->union(s.interfaces.clocks)->union(s.clocks)->includes(o.rInterfaces.clocks)
 	 	)
 	 )
+	 
+-- Timed Transitions well-formedness conditions (RoboChart reference 3.2.2)
+context Transition
+	-- TT1: A transition with a deadline must have a trigger
+	inv TT1: self.deadline <> null implies self.trigger <> null
 
--- Timed Expressions well-formedness conditions (RoboChart reference 3.2.2)
+-- Timed Expressions well-formedness conditions (RoboChart reference 3.2.3)
 	-- TE1: Expressions involving since(C) and sinceEntry(S) are only permitted in transition guards
 		-- corresponds to CE1 and SCE1 below
 	-- TE2: The clock C in an expression since(C) may only reference a clock declared within the expression's containing state-machine
@@ -397,7 +402,7 @@ context StateClockExp
 		self.parentTransition().containingStateMachine().nestedStates()->includes(self.state) and not self.state.oclIsKindOf(Final)
 
 		
--- Timed Statements well-formedness conditions (RoboChart reference 3.2.3)
+-- Timed Statements well-formedness conditions (RoboChart reference 3.2.4)
 context ClockReset
 	-- TS1: A clock reset #C may only reference a clock declared within the action's containing state-machine, or in the case of a trigger, within the trigger's containing state-machine
 	inv TS1: self.containingStateMachine().clocks->includes(self.clock)
