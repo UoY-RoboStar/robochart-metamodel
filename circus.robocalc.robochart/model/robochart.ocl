@@ -372,6 +372,8 @@ context Transition
 		-- corresponds to SCE3 below
 	-- TE4: The expressions since(C) or sinceEntry(S) may only occur in a comparison expression in which the other branch is a constant
 		-- corresponds to CE2 and SCE2 below
+	-- TE5: An expression sinceEntry(S) may only reference a state S within the same node container as the transition whose guard uses sinceEntry(S)
+		-- corresponds to SCE4 below
 		
 -- Clock expression well-formedness conditions
 context ClockExp
@@ -402,7 +404,10 @@ context StateClockExp
 	-- SCE3: The state S in an expression sinceEntry(S) may only reference a state, and not a Final state, within the containing expression’s state-machine
 	inv SCE3: self.parentIsTransition() implies
 		self.parentTransition().containingStateMachine().nestedStates()->includes(self.state) and not self.state.oclIsKindOf(Final)
-
+	-- SCE4: An expression sinceEntry(S) may only reference a state S within the same node container as the transition whose guard uses sinceEntry(S)
+		-- this is a strengthening of the first conjunct of SCE2
+	inv SCE4: self.parentIsTransition() implies
+		self.parentTransition().oclContainer().oclAsType(NodeContainer).nodes->includes(self.state)
 		
 -- Timed Statements well-formedness conditions (RoboChart reference 3.2.4)
 context ClockReset
