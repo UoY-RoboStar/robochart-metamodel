@@ -152,9 +152,11 @@ context ControllerDef
 	-- C3: All variables required by the controller's state-machines must be defined or required by the controller
 	inv C3: self.controllerRequiredVars()->union(self.controllerDefinedVars())
 		->includesAll(self.machines.stmDef().stmRequiredVars())
-	-- C4: All operations required by the controller's state-machines must be required or defined by the controller
+	-- C4: All operations required by the controller’s state machines, including the machines that define operations, must be required or defined by the controller
 	inv C4: self.controllerRequiredOps()->union(self.lOperations)
-		->includesAll(self.machines.stmDef().stmRequiredOps())
+		->includesAll(self.machines.stmDef().stmRequiredOps()
+			->union(self.lOperations.opDef().rInterfaces.operations)
+		)
 	-- C5: The names of variables, operations, and events are unique to the controller
 	-- operations declared directly in the controller are ruled out by C7
 	inv C5: self->collect(c | c.interfaces->union(c.rInterfaces)->union(c.pInterfaces))
