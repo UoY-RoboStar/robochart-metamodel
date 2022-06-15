@@ -372,7 +372,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Communication">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" lowerBound="1" eType="#//Event"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="_from" eType="#//Variable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="_predicate" eType="#//Expression"
         containment="true"/>

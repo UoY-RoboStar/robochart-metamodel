@@ -945,7 +945,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="robochart.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Z-7EkCsZEeuNmfmy_XxxTQ" name="StateMachine" repPath="#_Z-uQQCsZEeuNmfmy_XxxTQ" changeId="e8ab212f-4268-46c3-bf78-c511a2075599">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Z-7EkCsZEeuNmfmy_XxxTQ" name="StateMachine" repPath="#_Z-uQQCsZEeuNmfmy_XxxTQ" changeId="42665b65-1e60-46e7-b719-484df46a5c45">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="robochart.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -3605,6 +3605,10 @@
         <children xmi:type="notation:Node" xmi:id="_bF0bNysZEeuNmfmy_XxxTQ" type="2003" element="_a_eioSsZEeuNmfmy_XxxTQ">
           <children xmi:type="notation:Node" xmi:id="_bF1CQCsZEeuNmfmy_XxxTQ" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_bF1CQSsZEeuNmfmy_XxxTQ" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_VIvu0DMnEeuqNMq4yuqVYA" type="3010" element="_VIHcsDMnEeuqNMq4yuqVYA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_VIvu0TMnEeuqNMq4yuqVYA" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_VIvu0jMnEeuqNMq4yuqVYA"/>
+            </children>
             <children xmi:type="notation:Node" xmi:id="_VIvHzDMnEeuqNMq4yuqVYA" type="3010" element="_VIHcsjMnEeuqNMq4yuqVYA">
               <styles xmi:type="notation:FontStyle" xmi:id="_VIvHzTMnEeuqNMq4yuqVYA" fontName="Ubuntu" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_VIvHzjMnEeuqNMq4yuqVYA"/>
@@ -3616,10 +3620,6 @@
             <children xmi:type="notation:Node" xmi:id="_VIvHzzMnEeuqNMq4yuqVYA" type="3010" element="_VIHctTMnEeuqNMq4yuqVYA">
               <styles xmi:type="notation:FontStyle" xmi:id="_VIvH0DMnEeuqNMq4yuqVYA" fontName="Ubuntu" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_VIvH0TMnEeuqNMq4yuqVYA"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_VIvu0DMnEeuqNMq4yuqVYA" type="3010" element="_VIHcsDMnEeuqNMq4yuqVYA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_VIvu0TMnEeuqNMq4yuqVYA" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_VIvu0jMnEeuqNMq4yuqVYA"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_-FP-EC2AEeuNmfmy_XxxTQ" type="3010" element="_-EV_JS2AEeuNmfmy_XxxTQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_-FP-ES2AEeuNmfmy_XxxTQ" fontName="Ubuntu" fontHeight="8"/>
@@ -3827,13 +3827,13 @@
         <children xmi:type="notation:Node" xmi:id="_bF8-FCsZEeuNmfmy_XxxTQ" visible="false" type="2003" element="_a_slECsZEeuNmfmy_XxxTQ">
           <children xmi:type="notation:Node" xmi:id="_bF8-FysZEeuNmfmy_XxxTQ" visible="false" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_bF9lICsZEeuNmfmy_XxxTQ" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_Wt145isaEeuNmfmy_XxxTQ" visible="false" type="3010" element="_WsBT8CsaEeuNmfmy_XxxTQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_Wt145ysaEeuNmfmy_XxxTQ" fontName="Ubuntu" fontHeight="8" bold="true"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_Wt146CsaEeuNmfmy_XxxTQ"/>
-            </children>
             <children xmi:type="notation:Node" xmi:id="_VIwV5jMnEeuqNMq4yuqVYA" visible="false" type="3010" element="_VIJ48DMnEeuqNMq4yuqVYA">
               <styles xmi:type="notation:FontStyle" xmi:id="_VIwV5zMnEeuqNMq4yuqVYA" fontName="Ubuntu" fontHeight="8" bold="true"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_VIwV6DMnEeuqNMq4yuqVYA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Wt145isaEeuNmfmy_XxxTQ" visible="false" type="3010" element="_WsBT8CsaEeuNmfmy_XxxTQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_Wt145ysaEeuNmfmy_XxxTQ" fontName="Ubuntu" fontHeight="8" bold="true"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Wt146CsaEeuNmfmy_XxxTQ"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_Wt146SsaEeuNmfmy_XxxTQ" visible="false" type="3010" element="_WsBT8isaEeuNmfmy_XxxTQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_Wt146isaEeuNmfmy_XxxTQ" fontName="Ubuntu" fontHeight="8"/>
@@ -6981,6 +6981,14 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_VIHcsDMnEeuqNMq4yuqVYA" name=" deadline : Expression" tooltipText="">
+        <target xmi:type="ecore:EReference" href="robochart.ecore#//Transition/deadline"/>
+        <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//Transition/deadline"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_VIHcsTMnEeuqNMq4yuqVYA" labelAlignment="LEFT" color="114,159,207">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
+      </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_VIHcsjMnEeuqNMq4yuqVYA" name=" condition : Expression" tooltipText="">
         <target xmi:type="ecore:EReference" href="robochart.ecore#//Transition/condition"/>
         <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//Transition/condition"/>
@@ -7001,14 +7009,6 @@
         <target xmi:type="ecore:EReference" href="robochart.ecore#//Transition/probability"/>
         <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//Transition/probability"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_VIHctjMnEeuqNMq4yuqVYA" labelAlignment="LEFT" color="114,159,207">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_VIHcsDMnEeuqNMq4yuqVYA" name=" deadline : Expression" tooltipText="">
-        <target xmi:type="ecore:EReference" href="robochart.ecore#//Transition/deadline"/>
-        <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//Transition/deadline"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_VIHcsTMnEeuqNMq4yuqVYA" labelAlignment="LEFT" color="114,159,207">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
@@ -7326,18 +7326,18 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_WsBT8CsaEeuNmfmy_XxxTQ" name=" then : Statement" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="robochart.ecore#//IfStmt/then"/>
-        <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//IfStmt/then"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_WsBT8SsaEeuNmfmy_XxxTQ" labelAlignment="LEFT" description="_Wrd6UCsaEeuNmfmy_XxxTQ" color="114,159,207">
-          <labelFormat>bold</labelFormat>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_VIJ48DMnEeuqNMq4yuqVYA" name=" expression : Expression" visible="false" tooltipText="">
         <target xmi:type="ecore:EReference" href="robochart.ecore#//IfStmt/expression"/>
         <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//IfStmt/expression"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_VIJ48TMnEeuqNMq4yuqVYA" labelAlignment="LEFT" description="_Wrd6UCsaEeuNmfmy_XxxTQ" color="114,159,207">
+          <labelFormat>bold</labelFormat>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_WsBT8CsaEeuNmfmy_XxxTQ" name=" then : Statement" visible="false" tooltipText="">
+        <target xmi:type="ecore:EReference" href="robochart.ecore#//IfStmt/then"/>
+        <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//IfStmt/then"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_WsBT8SsaEeuNmfmy_XxxTQ" labelAlignment="LEFT" description="_Wrd6UCsaEeuNmfmy_XxxTQ" color="114,159,207">
           <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
@@ -9501,8 +9501,8 @@
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_vv1s0y2CEeuNmfmy_XxxTQ" name=" event : Event" tooltipText="">
         <target xmi:type="ecore:EReference" href="robochart.ecore#//Communication/event"/>
         <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//Communication/event"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_vv1s1C2CEeuNmfmy_XxxTQ" labelAlignment="LEFT" color="114,159,207">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_YZW3YfUsEeug0o_ETqpfEA" labelAlignment="LEFT" description="_Wrd6UCsaEeuNmfmy_XxxTQ" color="114,159,207">
+          <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
@@ -9552,17 +9552,14 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_vv5-Ry2CEeuNmfmy_XxxTQ" name="[0..1] event" visible="false" sourceNode="_vu7G0C2CEeuNmfmy_XxxTQ" targetNode="_a_DE0CsZEeuNmfmy_XxxTQ">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_vv5-Ry2CEeuNmfmy_XxxTQ" name="[1..1] event" visible="false" sourceNode="_vu7G0C2CEeuNmfmy_XxxTQ" targetNode="_a_DE0CsZEeuNmfmy_XxxTQ">
       <target xmi:type="ecore:EReference" href="robochart.ecore#//Communication/event"/>
       <semanticElements xmi:type="ecore:EReference" href="robochart.ecore#//Communication/event"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_vv6lUC2CEeuNmfmy_XxxTQ" routingStyle="manhattan" strokeColor="0,0,0">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_vv6lUi2CEeuNmfmy_XxxTQ" showIcon="false">
-          <customFeatures>labelSize</customFeatures>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_YZokNvUsEeug0o_ETqpfEA" description="_bCxuQSsZEeuNmfmy_XxxTQ" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_YZokOPUsEeug0o_ETqpfEA" showIcon="false">
+          <labelFormat>bold</labelFormat>
         </centerLabelStyle>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_vv6lUS2CEeuNmfmy_XxxTQ" showIcon="false" labelColor="39,76,114">
-          <customFeatures>labelSize</customFeatures>
-        </endLabelStyle>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_YZokN_UsEeug0o_ETqpfEA" labelSize="6" showIcon="false" labelColor="39,76,114"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
