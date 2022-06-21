@@ -5,18 +5,6 @@ import circus.robocalc.robochart.VariableList;
 import circus.robocalc.robochart.VariableModifier;
 
 public class VariableImplCustom extends VariableImpl {
-	@Override
-	public boolean equals(Object o) {
-		if (o == null) return false;
-		else if (!(o instanceof Variable)) return false;
-		else if (this.getName() == null) return false;
-		else {
-			if (!this.getName().equals(((Variable)o).getName())) return false;
-		}
-		// still need to compare types
-		return true;
-		//return super.equals(o);
-	}
 	
 	@Override
 	public VariableModifier getModifier() {
