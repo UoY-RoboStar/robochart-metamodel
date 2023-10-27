@@ -39,7 +39,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="controllers" ordered="false"
-        upperBound="-1" eType="#//ControllerDef" containment="true">
+        upperBound="-1" eType="#//GeneralController" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -51,7 +51,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" ordered="false"
-        upperBound="-1" eType="#//OperationDef" containment="true">
+        upperBound="-1" eType="#//GeneralOperation" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
         <details key="nullFree" value="false"/>
       </eAnnotations>
@@ -238,14 +238,14 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true" eSuperTypes="#//NamedElement #//ConnectionNode"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OperationDef" eSuperTypes="#//Operation #//OperationSig #//StateMachineBody"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationDef" eSuperTypes="#//StateMachineBody #//GeneralOperation"/>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The Reference class identifies reference constructs"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationRef" eSuperTypes="#//Operation #//Reference">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//OperationDef"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//GeneralOperation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Interface" eSuperTypes="#//NamedElement #//BasicContext">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -402,7 +402,7 @@
       <details key="documentation" value="Controllers"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ControllerDef" eSuperTypes="#//Context #//Controller">
+  <eClassifiers xsi:type="ecore:EClass" name="ControllerDef" eSuperTypes="#//GeneralController">
     <eStructuralFeatures xsi:type="ecore:EReference" name="machines" ordered="false"
         upperBound="-1" eType="#//StateMachine" containment="true">
       <eAnnotations source="http://www.eclipse.org/OCL/Collection">
@@ -435,7 +435,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControllerRef" eSuperTypes="#//Controller">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//ControllerDef"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" lowerBound="1" eType="#//GeneralController"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RCModule" eSuperTypes="#//NamedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -833,5 +833,34 @@
   <eClassifiers xsi:type="ecore:EClass" name="TransposeExp" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralController" eSuperTypes="#//Controller #//Context"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralOperation" eSuperTypes="#//Operation #//OperationSig #//Context"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ANN" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annparameters" lowerBound="1"
+        eType="#//ANNParameters" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ANNParameters">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activationfunction" lowerBound="1"
+        eType="#//ActivationFunction"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="insize" lowerBound="1"
+        eType="#//IntegerExp" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outsize" lowerBound="1"
+        eType="#//IntegerExp" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="layerstructure" eType="#//SeqExp"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weights" eType="#//SeqExp"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="biases" eType="#//SeqExp"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filename" eType="#//StringExp"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ANNController" eSuperTypes="#//ANN #//GeneralController"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ANNOperation" eSuperTypes="#//ANN #//GeneralOperation"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ActivationFunction">
+    <eLiterals name="NOTSPECIFIED"/>
+    <eLiterals name="RELU"/>
+    <eLiterals name="LINEAR"/>
   </eClassifiers>
 </ecore:EPackage>
