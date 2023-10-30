@@ -835,7 +835,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GeneralController" eSuperTypes="#//Controller #//Context"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GeneralOperation" eSuperTypes="#//Operation #//OperationSig #//Context"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralOperation" eSuperTypes="#//Operation #//OperationSig"/>
   <eClassifiers xsi:type="ecore:EClass" name="ANN" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annparameters" lowerBound="1"
         eType="#//ANNParameters" containment="true"/>
@@ -857,7 +857,10 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ANNController" eSuperTypes="#//ANN #//GeneralController"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ANNOperation" eSuperTypes="#//ANN #//GeneralOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ANNOperation" eSuperTypes="#//ANN #//GeneralOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rInterfaces" upperBound="-1"
+        eType="#//Interface"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ActivationFunction">
     <eLiterals name="NOTSPECIFIED"/>
     <eLiterals name="RELU"/>
