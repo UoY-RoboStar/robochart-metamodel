@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: circus.robocalc.robochart.edit;singleton:=true
 Automatic-Module-Name: circus.robocalc.robochart.edit
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 3.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: circus.robocalc.robochart.provider.RoboChartEditPlugin$Implementation
 Bundle-Vendor: %providerName
