@@ -843,10 +843,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="ANNParameters">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="activationfunction" lowerBound="1"
         eType="#//ActivationFunction"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="insize" lowerBound="1"
-        eType="#//IntegerExp" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outsize" lowerBound="1"
-        eType="#//IntegerExp" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="layerstructure" eType="#//SeqExp"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="weights" eType="#//SeqExp"
@@ -855,6 +851,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="filename" eType="#//StringExp"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputContext" lowerBound="1"
+        eType="#//Context" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputContext" lowerBound="1"
+        eType="#//Context" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ANNController" eSuperTypes="#//ANN #//GeneralController"/>
   <eClassifiers xsi:type="ecore:EClass" name="ANNOperation" eSuperTypes="#//ANN #//GeneralOperation">
@@ -866,4 +866,6 @@
     <eLiterals name="RELU"/>
     <eLiterals name="LINEAR"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputContext" eSuperTypes="#//Context"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputContext" eSuperTypes="#//Context"/>
 </ecore:EPackage>
